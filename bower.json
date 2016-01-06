@@ -19,6 +19,8 @@
   "dependencies": {
     "angular": "~1.4.8",
     "angular-ui-router": "~0.2.15",
-    "ng-file-upload": "~11.0.1"
+    "ng-file-upload": "~11.0.1",
+    "foundation": "~5.5.3",
+    "jquery": "~2.1.4"
   }
 }

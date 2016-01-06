@@ -3,13 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>Basic User App</title>
+  <base href="/">
+  <link rel="stylesheet" href="vendor/foundation/css/foundation.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="vendor/ng-file-upload/ng-file-upload.min.js"></script>
+  <script src="vendor/foundation/js/foundation.min.js"></script>
 </head>
-<body>
-  <h1>Yo</h1>
-  <img src="images/gigi.jpg" height="1024" width="634" alt="">
+<body ng-app="userApp" ng-controller="MainController as main">
+
+<img src="http://maxcdn.thedesigninspiration.com/wp-content/uploads/2012/11/Wallpaper-l-003.jpg" alt="wallpaper" id="wallpaper">
+
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a ui-sref="home">My Site</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a ui-sref="/"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="right">
+          <div ng-show="currentUser.id">
+            <li><a href="ui-sref="admin>Admin</a></li>
+            <li><a href="ui-sref="profile>Profile</a></li>
+            <li><a ng-click="main.logout()">Logout</a></li>
+          </div>
+        </ul>
+      </section>
+    </nav>
+
+    <div class="register_login_dashboard">
+      
+      <div class="r_l_header">
+        <h1 id="app_name">Basic User App</h1>
+        <h2 id="app_subheading">Tinashe, Emma Watson, Gigi, Victoria Justice, Keira Knightly</h2>
+      </div>
+
+      <div class="r_l_main">
+        <div id="signup_forms">
+          <button class="button r_l_buttons" id="get_started_button">Get Started</button>
+          <br>
+          <button class="button r_l_buttons" id="log_in_button">Log In</button>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+  <main class="container">
+    <div ui-view></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer_copyright">
+        &copy; 2016 -- Team Blue -- All Rights Reserved
+      </div>
+  </footer>
+
+  <script src="App/components/home/home.js"></script>
+  <script src="App/services/UserService.js"></script>
+  <script src="App/app.routes.js"></script>
+  <script src="App/app.js"></script>
 </body>
 </html>
