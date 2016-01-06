@@ -10,7 +10,13 @@ let User;
 
 let userSchema = mongoose.Schema({
   username: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  password: {type: String, required: true},
+  email: {type:String, required:true},
+  profilename: String,
+  isAdmin: {type:Boolean, default:false},
+  phone: String,
+  address: String,
+  about:String
 });
 
 userSchema.methods.token = function() {
