@@ -10,7 +10,13 @@ let User;
 
 let userSchema = mongoose.Schema({
   username: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  password: {type: String, required: true},
+  email: {type:String},
+  profilename: String,
+  isAdmin: {type:Boolean, default:false},
+  phone: String,
+  address: String,
+  about:String
 });
 
 userSchema.methods.token = function() {
@@ -31,7 +37,7 @@ userSchema.statics.login = function(userInfo, cb) {
       if (err) return cb('server err');
       if (isGood) {
         foundUser.password = null;
-        return cb(null, foundUser.token());
+        return cb(null, foundUser);
       } else {
         return cb('incorrect username or password');
       }
@@ -73,7 +79,7 @@ userSchema.statics.register = function(userInfo, cb) {
         });
         newUser.save((err, savedUser) => {
           savedUser.password = null;
-          return cb(err, savedUser.token());
+          return cb(err, savedUser);
         })
       });
     });
@@ -82,4 +88,4 @@ userSchema.statics.register = function(userInfo, cb) {
 
 
 User = mongoose.model('User', userSchema);
-module.exports = User;=
+module.exports = User;

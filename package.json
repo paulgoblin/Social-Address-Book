@@ -17,10 +17,12 @@
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.1",
     "bower": "^1.6.5",
+    "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "jwt-simple": "^0.4.0",
     "moment": "^2.11.0",
+    "mongoose": "^4.3.4",
     "morgan": "^1.6.1"
   }
 }
