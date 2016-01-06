@@ -21,7 +21,7 @@
         <li class="name">
           <h1><a ui-sref="home">My Site</a></h1>
         </li>
-        <li class="toggle-topbar menu-icon"><a ui-sref="home"><span>Menu</span></a></li>
+        <li class="toggle-topbar menu-icon"><a ui-sref="/"><span>Menu</span></a></li>
       </ul>
 
       <section class="top-bar-section">
@@ -35,7 +35,6 @@
       </section>
     </nav>
 
-  <div class="row">
     <div class="register_login_dashboard">
       
       <div class="r_l_header">
@@ -52,7 +51,6 @@
       </div>
 
     </div>
-  </div>
 
 
 
@@ -64,13 +62,15 @@
     <div ui-view></div>
   </main>
 
-  <footer class="footer_copyright">
-    &copy; Team Blue -- 2016
+  <footer class="footer">
+    <div class="footer_copyright">
+        &copy; 2016 -- Team Blue -- All Rights Reserved
+      </div>
   </footer>
 
-  <script src="app/components/home/home.js"></script>
-  <script src="app/services/UserService.js"></script>
-  <script src="app/app.routes.js"></script>
-  <script src="app/app.js"></script>
+  <script src="App/components/home/home.js"></script>
+  <script src="App/services/UserService.js"></script>
+  <script src="App/app.routes.js"></script>
+  <script src="App/app.js"></script>
 </body>
 </html>

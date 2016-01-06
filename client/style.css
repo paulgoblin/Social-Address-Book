@@ -1,7 +1,16 @@
-footer.footer_copyright {
-  text-align: center;
+.footer_copyright {
+  height: 100px;
+  margin: auto;
   color: #fff;
 }
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
 
 img#wallpaper {
   position: absolute;
@@ -12,6 +21,7 @@ img#wallpaper {
 
 .register_login_dashboard {
   text-align: center;
+  margin-top: 20%;
 }
 
 #app_name {
@@ -40,3 +50,4 @@ img#wallpaper {
   height: 52px;
   width: 292px;
 }
+
