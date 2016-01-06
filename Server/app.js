@@ -6,6 +6,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
+var authMiddleware = require('./util/authMiddleware');
+require('dotenv').load();
 
 var app = express();
 app.set('view engine', 'jade');
@@ -22,6 +24,7 @@ app.use(express.static('../Client'));
 // ROUTES
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/loginAndRegister'));
+app.use('/users', authMiddleware, require('./routes/Users'));
 
 app.listen(PORT, function(){
   console.log('Listening on port ', PORT);

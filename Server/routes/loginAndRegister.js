@@ -6,18 +6,16 @@ const express = require('express')
 let router = express.Router();
 
 router.post('/register', (req, res) => {
-  User.register(req.body, (err, token) => {
+  User.register(req.body, (err, user) => {
     res.status(err ? 400 : 200)
-    .set('Authorization', `Bearer ${token}`)
-    .send(err || 'ok');
+    .send(err || {token: user.token(), "user":user});
   });
 });
 
 router.post('/login', (req, res) => {
-  User.login(req.body, (err, token) => {
+  User.login(req.body, (err, user) => {
     res.status(err ? 400 : 200)
-    .set('Authorization', `Bearer ${token}`)
-    .send(err || 'ok');
+    .send(err || {"user": user, token: user.token()});
   });
 });
 
