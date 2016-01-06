@@ -7,11 +7,13 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var authMiddleware = require('./util/authMiddleware');
-require('dotenv').load();
+var path = require('path');
+// require('dotenv').load();
 
 var app = express();
 app.set('view engine', 'jade');
-app.set('views', "../Client");
+app.set('views', path.join(__dirname, "../Client") );
+app.use(express.static('Client'))
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/userApp');
 

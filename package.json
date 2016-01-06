@@ -5,7 +5,7 @@
   "main": "app.js",
   "author": "",
   "scripts": {
-    "start": "node app.js",
+    "start": "node Server/app.js",
     "postinstall": "bower i",
     "setup": "npm i && bower i"
   },
@@ -17,7 +17,7 @@
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.1",
     "bower": "^1.6.5",
-    "dotenv": "^1.2.0",
+    "ejs": "^2.3.4",
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "jwt-simple": "^0.4.0",
