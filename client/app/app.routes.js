@@ -8,7 +8,7 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider){
   $urlRouterProvider.otherwise('/');
   $stateProvider
     .state('home', {
-      url: '/',
+      url: '/home',
       templateUrl: 'app/components/home/home.html',
       controller: 'HomeController as home'
     });
