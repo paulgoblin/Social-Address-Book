@@ -7,12 +7,14 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
 var app = express();
+app.set('view engine', 'jade');
+app.set('views', "../Client");
 
 // GENERAL MIDDLEWARE
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('../Client'));
 
 // ROUTES
 app.use('/', require('./routes/index'));

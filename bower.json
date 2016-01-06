@@ -1,22 +1,23 @@
 {
-  "name": "expresstest",
+  "name": "userapp",
   "description": "",
   "main": "app.js",
   "authors": [
-    
+    "eds0ng <edwardsong165@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": ,
+  "homepage": "https://github.com/paulgoblin/basicUserApp",
   "moduleType": [],
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "Client/vendor",
     "test",
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
-    "bootstrap": "~3.3.5"
+    "angular": "~1.4.8",
+    "angular-ui-router": "~0.2.15"
   }
 }
