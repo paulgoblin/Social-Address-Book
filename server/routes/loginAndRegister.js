@@ -6,16 +6,17 @@ const express = require('express')
 let router = express.Router();
 
 router.post('/register', (req, res) => {
-  User.register(req.body, (err, user) => {
+  User.register(req.body, (err, savedUser) => {
+  	console.log(savedUser, 'user registered');
     res.status(err ? 400 : 200)
-    .send(err || {token: user.token(), "user":user});
+    .send(err || { token: savedUser.token(), "user": savedUser });
   });
 });
 
 router.post('/login', (req, res) => {
   User.login(req.body, (err, user) => {
     res.status(err ? 400 : 200)
-    .send(err || {"user": user, token: user.token()});
+    .send(err || { "user": user, token: user.token() });
   });
 });
 
