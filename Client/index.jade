@@ -1,39 +1,14 @@
 doctype html
 html(lang='en')
-  head
-    meta(charset='UTF-8')
-    title Basic User App
-    base(href='/')
-    link(rel='stylesheet', href='vendor/foundation/css/foundation.min.css')
-    link(rel='stylesheet', href='style.css')
-    script(src='vendor/angular/angular.min.js')
-    script(src='vendor/jquery/dist/jquery.min.js')
-    script(src='vendor/angular-ui-router/release/angular-ui-router.min.js')
-    script(src='vendor/ng-file-upload/ng-file-upload.min.js')
-    script(src='vendor/foundation/js/foundation.min.js')
+  include ./includes/head.jade
+
   body(ng-app='userApp', ng-controller='MainController as main')
     img#wallpaper(src='http://maxcdn.thedesigninspiration.com/wp-content/uploads/2012/11/Wallpaper-l-003.jpg', alt='wallpaper')
-    nav.top-bar(data-topbar='', role='navigation')
-      ul.title-area
-        li.name
-          h1
-            a(ui-sref='home') My Site
-        li.toggle-topbar.menu-icon
-          a(ui-sref='/')
-            span Menu
-      section.top-bar-section
-        ul.right
-          div(ng-show='currentUser.id')
-            li
-              a(href='ui-sref=', admin='') Admin
-            li
-              a(href='ui-sref=', profile='') Profile
-            li
-              a(ng-click='main.logout()') Logout
+    include ./includes/navbar.jade
     .register_login_dashboard
       .r_l_header
         h1#app_name Basic User App
-        h2#app_subheading Tinashe, Emma Watson, Gigi, Victoria Justice, Keira Knightly
+        h2#app_subheading Tinashe, Emma Watson, Gigi, Victoria Justice, Keira Knightly, Daisy Ridley, Natalie Portman
       .r_l_main
         #signup_forms
           button#get_started_button.button.r_l_buttons Get Started
@@ -41,9 +16,7 @@ html(lang='en')
           button#log_in_button.button.r_l_buttons Log In
     main.container
       div(ui-view='')
-    footer.footer
-      .footer_copyright
-        | © 2016 -- Team Blue -- All Rights Reserved
+    include ./includes/footer.jade
     script(src='App/components/home/home.js')
     script(src='App/services/UserService.js')
     script(src='App/app.routes.js')
