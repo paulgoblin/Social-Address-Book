@@ -4,10 +4,12 @@ module.exports = {
   expTime: {num: 7, unit: 'days'},
   refreshToken: false,
   saltRounds: 10,
-  validatePassword: function(password) {
+  validatePassword: (password) => {
+  	// input password validation
     return true;
   },
-  validateUsername: function(username) {
+  validateUsername: (username) => {
+  	// input username validation
     return true;
   }
 };

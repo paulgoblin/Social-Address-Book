@@ -10,8 +10,8 @@ let User;
 
 let userSchema = mongoose.Schema({
   username: {type: String, required: true, unique: true},
+  email: {type:String, required: true},
   password: {type: String, required: true},
-  email: {type:String},
   profilename: String,
   isAdmin: {type:Boolean, default:false},
   phone: String,
@@ -31,7 +31,8 @@ userSchema.methods.token = function() {
 userSchema.statics.login = function(userInfo, cb) {
   // look for user in database
   User.findOne({username: userInfo.username}, (err, foundUser) => {
-    if (err) return cb('server error');
+    if (err) return cb('server error'); 
+    // instead of sending back a string, we should send something more specific, so the front can let the user know?
     if (!foundUser) return cb('incorrect username or password');
     bcrypt.compare(userInfo.password, foundUser.password, (err, isGood) => {
       if (err) return cb('server err');
@@ -46,9 +47,10 @@ userSchema.statics.login = function(userInfo, cb) {
 }
 
 userSchema.statics.register = function(userInfo, cb) {
-  let username  = userInfo.username
-    , password  = userInfo.password
-    , password2 = userInfo.password2;
+  let username = userInfo.username
+    , password = userInfo.password
+    , password2 = userInfo.password2
+    , email = userInfo.email;
 
   // compare passwords
   if (password !== password2) {
@@ -75,7 +77,8 @@ userSchema.statics.register = function(userInfo, cb) {
         if (err) return cb(err);
         let newUser = new User({
           username: username,
-          password: hashedPassword
+          password: hashedPassword,
+          email: email
         });
         newUser.save((err, savedUser) => {
           savedUser.password = null;
@@ -85,7 +88,6 @@ userSchema.statics.register = function(userInfo, cb) {
     });
   });
 };
-
 
 User = mongoose.model('User', userSchema);
 module.exports = User;
