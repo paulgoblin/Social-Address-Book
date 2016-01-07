@@ -8,5 +8,6 @@ angular
 
 function MainCtrl(){
   var main = this;
-  
+  main.test = "dope";
+
 }
