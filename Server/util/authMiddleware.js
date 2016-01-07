@@ -36,7 +36,7 @@ module.exports = function(req, res, next) {
       if (err) return res.status(400).send('server error');
       req.isAdmin = user.isAdmin;
       console.log(user.isAdmin, req.isAdmin);
+      next();
     })
-    next();
   }
 };
