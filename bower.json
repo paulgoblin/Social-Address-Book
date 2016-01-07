@@ -1,9 +1,14 @@
 {
-  "name": "userapp",
-  "description": "",
+  "name": "user-creepin",
+  "version": "0.0.0",
+  "description": "Creep on other users, favorite the ones you want to stalk!",
   "main": "app.js",
-  "authors": [
-    "eds0ng <edwardsong165@gmail.com>"
+  "author": [
+    "Virsaviya Efraim <Virsaviya.Efraim@gmail.com",
+    "Paul Richter <mpr75@cornell.edu>",
+    "Ray Kim",
+    "Edward Song",
+    "Missy Bur"
   ],
   "license": "ISC",
   "homepage": "https://github.com/paulgoblin/basicUserApp",
