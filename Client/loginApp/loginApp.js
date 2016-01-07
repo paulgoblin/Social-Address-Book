@@ -1,9 +1,15 @@
 'use strict';
 
-var app = angular.module('loginApp', []);
+angular
+  .module('loginApp', [
 
-app.controller('MainCtrl', function($scope) {
-  $scope.test = "controller here"
-  console.log($scope.test);
+  ])
+  .controller('MainCtrl', [MainCtrl]);
 
-});
+function MainCtrl(){
+  var main = this;
+  main.test = "controller here"
+  console.log(main.test)
+}
+
+
