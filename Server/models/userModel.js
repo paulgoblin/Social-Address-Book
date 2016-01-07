@@ -6,12 +6,14 @@ const mongoose = require('mongoose')
     , moment   = require('moment')
     , CONFIG   = require('../config/auth');
 
-let User;
+let User,
+    Schema = mongoose.Schema;
 
-let userSchema = mongoose.Schema({
+let userSchema = Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   email: {type:String},
+  favorites: [{type:Schema.Types.ObjectId, ref: User}],
   profilename: String,
   isAdmin: {type:Boolean, default:false},
   phone: String,

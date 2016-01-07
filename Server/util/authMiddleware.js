@@ -23,7 +23,7 @@ module.exports = function(req, res, next) {
   }
 
   if (CONFIG.refreshToken) {
-    User.findOneById(decoded.id, (err, user) => {
+    User.findById(decoded.id, (err, user) => {
       if (err) return res.status(400).send('server error');
       if (!user) return res.status(401).send('authorization required');
       req.userId = decoded.id;
@@ -32,6 +32,11 @@ module.exports = function(req, res, next) {
     });
   } else {
     req.userId = decoded.id;
+    User.findById(decoded.id, (err, user) => {
+      if (err) return res.status(400).send('server error');
+      req.isAdmin = user.isAdmin;
+      console.log(user.isAdmin, req.isAdmin);
+    })
     next();
   }
 };
