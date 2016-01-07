@@ -2,10 +2,8 @@ doctype html
 html(lang='en')
   head
     include ./includes/head.jade
-    script(src='dashboardApp/dashboardApp.js')
 
-
-  body(ng-app='dashboardApp', ng-controller='DashboardCtrl as dashboard')
+  body(ng-app='userApp', ng-controller='MainCtrl as main')
     img#wallpaper(src='http://maxcdn.thedesigninspiration.com/wp-content/uploads/2012/11/Wallpaper-l-003.jpg', alt='wallpaper')
     include ./includes/navbar.jade
     .register_login_dashboard
@@ -17,5 +15,5 @@ html(lang='en')
           button#get_started_button.button.r_l_buttons Get Started
           br
           button#log_in_button.button.r_l_buttons Log In
-          div {{dashboard.test}}
+          div {{main.test}}
     include ./includes/footer.jade
