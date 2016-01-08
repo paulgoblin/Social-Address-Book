@@ -1,8 +1,8 @@
 angular
   .module('app.landing_page', [])
-  .controller('LandingPageCtrl', ['LoginSvc', '$rootScope', '$state', LandingPageCtrl]);
+  .controller('LandingPageCtrl', ['LoginSvc', '$rootScope', '$state', '$http', LandingPageCtrl]);
 
-function LandingPageCtrl(LoginSvc, $rootScope, $state){
+function LandingPageCtrl(LoginSvc, $rootScope, $state, $http){
   var landing_page = this;
   landing_page.showRegister = showRegister;
   landing_page.showLogin = showLogin;
@@ -29,9 +29,10 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state){
 
   function loginResHandler(promise){
     promise.then(function(res){
-      $rootScope.LS.set('token', {'token': `Bearer ${res.data.token}`})
+      $rootScope.LS.set('token', `Bearer ${res.data.token}`)
       $rootScope.LS.set('me', res.data.user)
-      location.reload();
+      $http.defaults.headers.common.Authorization = $rootScope.LS.get('token')
+      $state.go('home')
     }, function(err){
       landing_page.err_msg =  err.data;
     })
