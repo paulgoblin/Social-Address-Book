@@ -1,7 +1,7 @@
 angular
   .module('UserSvc', [])
-  .factory('UserSvc', [UserSvc]);
+  .service('UserSvc', [UserSvc]);
 
 function UserSvc(){
-  
+  console.log('asdassa')
 }
