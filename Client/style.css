@@ -1,0 +1,102 @@
+.footer_copyright {
+  height: 33px;
+  margin: auto;
+  color: #fff;
+}
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+
+img#wallpaper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -5555;
+}
+
+.register_login_dashboard {
+  text-align: center;
+  margin-top: 20%;
+}
+
+#app_name {
+  float: none;
+  margin: auto;
+  color: #fff;
+  overflow: hidden;
+  width: 232px;
+  height: 50px;
+  padding: 0;
+}
+
+#app_subheading h4 {
+  width: 490px;
+  position: relative;
+  left: 50%;
+  margin: 10px 0 16px -258px;
+  font-size: 16px;
+  color: #fff;
+  line-height: 22px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.r_l_buttons {
+  height: 52px;
+  width: 292px;
+}
+
+html body {
+  color: #fff;
+}
+
+.avatar {
+  max-width: 250px;
+  max-height: 250px;
+  min-height: 250px;
+  min-width: 250px;
+  border-radius: 12px;
+  margin-bottom: 50px;
+  top: 31px;
+}
+
+.content {
+  color: #000;
+}
+
+textarea#bio {
+  max-width: 400px;
+}
+
+.user_profile_page {
+  margin-top: 15px;
+}
+
+.users_list {
+  border: 2px dotted black;
+}
+
+.avatar_phone_number #phone_number {
+  visibility: hidden;
+}
+
+.avatar_phone_number:hover #phone_number{
+  visibility: visible;
+}
+
+.users_list{
+  margin-top: 36px;
+}
+
+.content {
+  margin-top: 15px;
+}
+
+accordion {
+  color: black;
+}
