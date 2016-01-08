@@ -1,4 +1,4 @@
-nav.top-bar(data-topbar='', role='navigation')
+nav.top-bar(data-topbar='', role='navigation' ng-controller="MainCtrl as main" ng-show="main.isLoggedIn")
   ul.title-area
     li.name
       h1

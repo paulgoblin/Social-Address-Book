@@ -22,5 +22,5 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider){
       url: '/users',
       templateUrl: 'app/components/users/users.html',
       controller: 'UsersCtrl as users'
-    });
+    })
 }

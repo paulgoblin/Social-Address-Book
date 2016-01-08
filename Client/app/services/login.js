@@ -14,5 +14,6 @@ function LoginSvc($http){
     return $http.post('/auth/login', input)
   }
 
+
 }
 

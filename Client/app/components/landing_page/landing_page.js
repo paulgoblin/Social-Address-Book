@@ -31,7 +31,7 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state){
     promise.then(function(res){
       $rootScope.LS.set('token', {'token': `Bearer ${res.data.token}`})
       $rootScope.LS.set('me', res.data.user)
-      $state.go('home')
+      location.reload();
     }, function(err){
       landing_page.err_msg =  err.data;
     })

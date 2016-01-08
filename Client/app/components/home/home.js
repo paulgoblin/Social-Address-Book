@@ -1,7 +1,7 @@
 angular
   .module('app.home', [])
-  .controller('HomeCtrl', [HomeCtrl]);
+  .controller('HomeCtrl', ['UserSvc', HomeCtrl]);
 
-function HomeCtrl(){
+function HomeCtrl(UserSvc){
   var home = this;
 }

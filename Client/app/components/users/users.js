@@ -1,10 +1,14 @@
 angular
   .module('app.users', [])
-  .controller('UsersCtrl', [UsersCtrl]);
+  .controller('UsersCtrl', ['UserSvc', UsersCtrl]);
 
-function UsersCtrl(){
+function UsersCtrl(UserSvc){
   var users = this;
 }
+
+
+
+
 
 // angular
 //   .module('app.users',[])
