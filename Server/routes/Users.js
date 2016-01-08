@@ -11,6 +11,12 @@ router.get('/', function (req, res){
   })
 })
 
+router.get('/me', function(req, res){
+  User.findById(req.userId, function(err, user){
+    res.status(err ? 400 : 200).send(err || user);
+  })
+})
+
 router.post('/favorites', function (req, res){
   console.log(req.body, req.userId);
   User.findByIdAndUpdate(req.userId, {$addToSet: {favorites:req.body.favorites}}, function (err, updatedUser){
