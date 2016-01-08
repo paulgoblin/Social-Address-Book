@@ -14,10 +14,16 @@ function NavbarCtrl($scope, $state, NavSvc){
   }
 
   $scope.users = function(){
-
+    NavSvc.users(function(resp){
+      if (!resp){
+        $state.go('landing_page')
+      } else {
+        console.log(resp)
+      }
+    });
   }
 
   $scope.logout = function(){
-
+    NavSvc.logout();
   }
 }
