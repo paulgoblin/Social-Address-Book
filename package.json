@@ -13,7 +13,7 @@
   "license": "ISC",
   "homepage": "https://github.com/paulgoblin/basicUserApp",
   "scripts": {
-    "start": "node Server/server.js",
+    "start": "node server/app.js",
     "postinstall": "bower i",
     "setup": "npm i && bower i"
   },
