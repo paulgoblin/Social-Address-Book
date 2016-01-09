@@ -1,4 +1,3 @@
-<img src="http://maxcdn.thedesigninspiration.com/wp-content/uploads/2012/11/Wallpaper-l-003.jpg" alt="wallpaper" id="wallpaper">
 <div class="register_login_dashboard">
   <div class="r_l_header">
     <h1 id="app_name">Basic User App</h1>
@@ -18,11 +17,15 @@
         <small class="error">Invalid Email</small>
       </label> -->
       <span ng-show="landing_page.err_msg">{{landing_page.err_msg}}</span>
-      <input type="text" placeholder="Username" ng-model="input.username">
-      <input type="password" placeholder="Password" ng-model="input.password">
-      <input type="password" placeholder="Confirm Password" ng-model="input.password2" ng-hide="landing_page.formToShow === 'login'">
+      <div class="r_l_inputs">
+        <input type="email" placeholder="Email" ng-model="input.email" ng-hide="landing_page.formToShow === 'login'">
+        <input type="text" placeholder="Username" ng-model="input.username">
+        <input type="password" placeholder="Password" ng-model="input.password">
+        <input type="password" placeholder="Confirm Password" ng-model="input.password2" ng-hide="landing_page.formToShow === 'login'">
+      </div>
       <button ng-hide="landing_page.formToShow === 'login'" ng-click="landing_page.register(input)">Register</button>
       <button ng-hide="landing_page.formToShow === 'register'" ng-click="landing_page.login(input)">Log In</button>
+      <button ng-show="landing_page.formToShow" ng-click="landing_page.cancel()">Cancel</button>
     </div>
   </div>
 </div>
