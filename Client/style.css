@@ -121,10 +121,6 @@ textarea#bio {
   margin-top: 15px;
 }
 
-.users_list {
-  /*border: 2px dotted black;*/
-  color: black;
-}
 
 .avatar_phone_number #phone_number {
   visibility: hidden;
@@ -206,14 +202,25 @@ p {
  /*  USERS  */
 /*---------*/
 
- * {
+.users_list {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  min-height: 80vh;
+}
+
+ .users_list * {
   /*border: 1px solid red;*/
+}
+
+.users_list .row {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .content {
   padding-left: 15px;
   padding-right: 15px;
-  color: #57c4e5;
+  color: #E5E5E7;
 }
 
 .viewFavorites {
@@ -224,10 +231,12 @@ p {
   border-radius: 5px;
 }
 
+
 /* miniBar styling */
 .miniBar {
-  background-color: #333333;
+  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
+  padding-left: 0px;
 }
 
 .editBtns {
@@ -237,23 +246,26 @@ p {
 
 .thumbAvatar {
   border-radius: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  /*width: 50px;*/
+  padding: 0;
+  margin: 0;
+  max-height: 44px;
 }
 
 .userName, .about {
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .userName {
+  padding-top: 8px;
+  padding-bottom: 8px;
   text-align: right;
-  font-weight: bold;
+  font-size: 1.2em;
+  /*font-weight: bold;*/
   padding-right: 5px;
 }
 
 .about {
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-style: italic;
   padding-left: 5px;
 }
