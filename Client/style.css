@@ -2,7 +2,10 @@
  /*  ALL  */
 /*-------*/
 
-<<<<<<< HEAD
+button, .button {
+  border-radius: 5px;
+}
+
 /* navbar */
 .top-bar {
   background-color: rgba(0, 0, 0, 0.5);
@@ -35,8 +38,6 @@ img#wallpaper {
 }
 
 /* footer */
-=======
->>>>>>> usersStyle
 .footer_copyright {
   height: 33px;
   margin: auto;
@@ -51,19 +52,6 @@ img#wallpaper {
   width: 100%;
   padding-top: 10px;
 }
-
-<<<<<<< HEAD
-  /*----------------*/
- /*  LANDING PAGE  */
-/*----------------*/
-=======
-img#wallpaper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -5555;
-}
->>>>>>> usersStyle
 
   /*----------------*/
  /*  LANDING PAGE  */
@@ -106,9 +94,13 @@ html body {
 }
 
 .r_l_inputs {
-  width: 300px;
   display: block;
   text-align: center;
+}
+
+.r_l_main button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
   /*--------*/
@@ -154,7 +146,6 @@ textarea#bio {
   margin-top: 15px;
 }
 
-<<<<<<< HEAD
 body {
   margin: 0;
   padding: 0;
@@ -245,7 +236,6 @@ p {
   height: 37px;
   padding: 8px;
   margin-bottom: 16px;
-  border-radius: 5px;
 }
 
 
@@ -276,7 +266,6 @@ p {
   padding-bottom: 8px;
   text-align: right;
   font-size: 1.2em;
-  /*font-weight: bold;*/
   padding-right: 5px;
 }
 
@@ -299,10 +288,3 @@ p {
 .fullAvatar {
   height: 200px;
 }
-
-
-=======
-/*.accordion {
-  color: black;
-}*/
->>>>>>> usersStyle
