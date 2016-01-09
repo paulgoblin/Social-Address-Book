@@ -2,8 +2,19 @@
  /*  ALL  */
 /*-------*/
 
+html body {
+  color: #fff;
+}
+
 button, .button {
   border-radius: 5px;
+}
+
+img#wallpaper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -5555;
 }
 
 /* navbar */
@@ -24,13 +35,6 @@ button, .button {
 
 .name h1 {
   color: #fff;
-}
-
-img#wallpaper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -5555;
 }
 
 .top-bar li:hover {
@@ -88,14 +92,14 @@ img#wallpaper {
   height: 52px;
   width: 292px;
 }
-
-html body {
-  color: #fff;
-}
-
-.r_l_inputs {
+.errorMessage {
   display: block;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ce1414;
+  padding: 10px;
+  margin: 0 auto 16px auto;
+  border-radius: 5px;
 }
 
 .r_l_main button {
@@ -216,10 +220,6 @@ p {
   min-height: 80vh;
 }
 
- .users_list * {
-  /*border: 1px solid red;*/
-}
-
 .users_list .row {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -256,9 +256,6 @@ p {
   padding: 0;
   margin: 0;
   max-height: 44px;
-}
-
-.userName, .about {
 }
 
 .userName {
