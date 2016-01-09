@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 app.use(express.static('Client'));
 
 // ROUTES
-app.use('/noHash/auth', require('./routes/loginAndRegister'));
-app.use('/noHash/users', authMiddleware, require('./routes/Users'));
+app.use('/API/auth', require('./routes/loginAndRegister'));
+app.use('/API/users', authMiddleware, require('./routes/Users'));
 app.use('*', require('./routes/index'))
 
 app.listen(PORT, function(){
