@@ -17,7 +17,4 @@ function LoginSvc($http){
   this.setAuthHeader = function(token) {
     $http.defaults.headers.common.Authorization = token;
   }
-
-
 }
-
