@@ -1,4 +1,13 @@
 <div class="container users_list">
+  <div class="row">
+    <div class="small-3 columns">
+      <input type="text" placeholder="search" >
+    </div>
+    <div class="small-3 columns">
+      <div class="viewFavorites button small-push-1 columns">Favorites</div>
+    </div>  
+  </div>
+
   <div class="content" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)" ng-class="{ 'cardIsActive' : activeCards[user._id] }">
     <div class="miniBar">
       <span class="favStar">

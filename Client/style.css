@@ -1,3 +1,7 @@
+  /*-------*/
+ /*  ALL  */
+/*-------*/
+
 .footer_copyright {
   height: 33px;
   margin: auto;
@@ -21,6 +25,10 @@ img#wallpaper {
   height: 100%;
   z-index: -5555;
 }
+
+  /*----------------*/
+ /*  LANDING PAGE  */
+/*----------------*/
 
 .register_login_dashboard {
   text-align: center;
@@ -58,6 +66,16 @@ html body {
   color: #fff;
 }
 
+.r_l_inputs {
+  width: 300px;
+  display: block;
+  text-align: center;
+}
+
+  /*--------*/
+ /*  HOME  */
+/*--------*/
+
 .avatar {
   max-width: 250px;
   max-height: 250px;
@@ -81,7 +99,7 @@ textarea#bio {
 }
 
 .users_list {
-  border: 2px dotted black;
+  /*border: 2px dotted black;*/
   color: black;
 }
 
@@ -161,6 +179,21 @@ p {
   color: orange;
 }
 
+  /*---------*/
+ /*  USERS  */
+/*---------*/
+
+* {
+  /*border: 1px solid red;*/
+}
+
+.viewFavorites {
+  width: 200px;
+  height: 37px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
 .fullBar {
   display: none;
 }
@@ -176,4 +209,5 @@ p {
 .fullAvatar {
   height: 200px;
 }
+
 
