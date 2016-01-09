@@ -1,3 +1,7 @@
+  /*-------*/
+ /*  ALL  */
+/*-------*/
+
 .footer_copyright {
   height: 33px;
   margin: auto;
@@ -11,13 +15,16 @@
   width: 100%;
 }
 
-
 img#wallpaper {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: -5555;
 }
+
+  /*----------------*/
+ /*  LANDING PAGE  */
+/*----------------*/
 
 .register_login_dashboard {
   text-align: center;
@@ -54,6 +61,16 @@ img#wallpaper {
 html body {
   color: #fff;
 }
+
+.r_l_inputs {
+  width: 300px;
+  display: block;
+  text-align: center;
+}
+
+  /*--------*/
+ /*  HOME  */
+/*--------*/
 
 .avatar {
   max-width: 250px;
@@ -97,6 +114,6 @@ textarea#bio {
   margin-top: 15px;
 }
 
-accordion {
+/*.accordion {
   color: black;
-}
+}*/

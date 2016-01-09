@@ -8,6 +8,7 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state){
   landing_page.showLogin = showLogin;
   landing_page.login = login;
   landing_page.register = register;
+  landing_page.cancel = cancel;
 
   function showRegister(){
     landing_page.formToShow = 'register';
@@ -25,6 +26,10 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state){
   function login(input){
     var promise = LoginSvc.login(input);
     loginResHandler( promise );
+  }
+
+  function cancel(){
+    landing_page.formToShow = null;
   }
 
   function loginResHandler(promise){
