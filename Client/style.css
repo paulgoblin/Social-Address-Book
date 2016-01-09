@@ -161,7 +161,6 @@ p {
   color: orange;
 }
 
-<<<<<<< HEAD
 .navigation {
   padding-left: 9px;
   padding-top: 7px;
@@ -175,7 +174,6 @@ p {
 .navigation:hover, .home:hover {
   cursor: pointer;
 }
-=======
 .fullBar {
   display: none;
 }
@@ -192,4 +190,3 @@ p {
   height: 200px;
 }
 
->>>>>>> 2b1b3574d1007d9708ac46373325e4daea99b3db
