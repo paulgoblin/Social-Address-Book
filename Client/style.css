@@ -2,6 +2,7 @@
  /*  ALL  */
 /*-------*/
 
+<<<<<<< HEAD
 /* navbar */
 .top-bar {
   background-color: rgba(0, 0, 0, 0.5);
@@ -34,6 +35,8 @@ img#wallpaper {
 }
 
 /* footer */
+=======
+>>>>>>> usersStyle
 .footer_copyright {
   height: 33px;
   margin: auto;
@@ -48,6 +51,19 @@ img#wallpaper {
   width: 100%;
   padding-top: 10px;
 }
+
+<<<<<<< HEAD
+  /*----------------*/
+ /*  LANDING PAGE  */
+/*----------------*/
+=======
+img#wallpaper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -5555;
+}
+>>>>>>> usersStyle
 
   /*----------------*/
  /*  LANDING PAGE  */
@@ -138,6 +154,7 @@ textarea#bio {
   margin-top: 15px;
 }
 
+<<<<<<< HEAD
 body {
   margin: 0;
   padding: 0;
@@ -232,7 +249,7 @@ p {
 }
 
 
-/* miniBar styling */
+/* miniBar styligng */
 .miniBar {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
@@ -284,3 +301,8 @@ p {
 }
 
 
+=======
+/*.accordion {
+  color: black;
+}*/
+>>>>>>> usersStyle
