@@ -36,7 +36,7 @@ router.post('/admin', function (req, res){
 })
 
 router.put('/', function (req, res){
-  if (req.userId === req.body.id || isAdmin){
+  if (req.userId === req.body.id || req.isAdmin){
     User.findByIdAndUpdate(req.userId, req.body, function (err, updatedUser){
       res.status(err ? 400 : 200).send(err || updatedUser);
     })
