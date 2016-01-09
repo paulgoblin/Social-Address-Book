@@ -1,12 +1,13 @@
 angular
   .module('app.users', [])
-  .controller('UsersCtrl', ['UserSvc', 'StoreSvc', UsersCtrl]);
+  .controller('UsersCtrl', ['$scope', 'UserSvc', 'StoreSvc', UsersCtrl]);
 
-function UsersCtrl(UserSvc, StoreSvc){
+function UsersCtrl($scope, UserSvc, StoreSvc){
 
 
-  var users = StoreSvc.returnData("users");
-  console.log('3. users from user ctrl', users)
+  $scope.users = StoreSvc.returnData("users");
+  
+
 }
 
 
