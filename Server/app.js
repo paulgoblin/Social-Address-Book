@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 app.use(express.static('Client'));
 
 // ROUTES
-app.use('/', require('./routes/index'));
-app.use('/auth', require('./routes/loginAndRegister'));
-app.use('/users', authMiddleware, require('./routes/Users'));
+app.use('/noHash/auth', require('./routes/loginAndRegister'));
+app.use('/noHash/users', authMiddleware, require('./routes/Users'));
+app.use('*', require('./routes/index'))
 
 app.listen(PORT, function(){
   console.log('Listening on port ', PORT);

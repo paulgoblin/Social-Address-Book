@@ -7,6 +7,10 @@ let router = express.Router();
 
 router.get('/', function (req, res){
   User.find({}, function (err, users){
+    users = users.map(user => {
+      user.password = null;
+      return user;
+    })
     res.status(err ? 400 : 200).send(err || users);
   })
 })

@@ -3,10 +3,10 @@ angular
   .controller('NavbarCtrl', ['$scope','$state','NavSvc','StoreSvc', NavbarCtrl]);
 
 function NavbarCtrl($scope, $state, NavSvc, StoreSvc){
+
   $scope.home = function(){
     NavSvc.home(function(resp){
       if (resp.status === 401){
-        console.log('edward')
         $state.go('landing_page')
       } else if (resp.status >= 400 && resp.status !== 401) {
         console.log(resp)
