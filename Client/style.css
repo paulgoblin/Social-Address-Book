@@ -63,7 +63,7 @@ html body {
   max-height: 250px;
   min-height: 250px;
   min-width: 250px;
-  border-radius: 12px;
+  border-radius: 27px;
   margin-bottom: 50px;
   top: 31px;
 }
@@ -157,8 +157,8 @@ body{
   outline: none;
 }
 
-p {
-  color: orange;
+em, .profile_info {
+  color: black;
 }
 
 .navigation {
