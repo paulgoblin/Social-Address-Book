@@ -13,7 +13,7 @@ function NavSvc($http){
         cb(resp)
       }, function(err){
         console.log(err)
-        cb(null)
+        cb(err)
       });
   }
   this.users = function(cb){
@@ -23,11 +23,13 @@ function NavSvc($http){
         cb(resp)
       }, function(err){
         console.log(err)
-        cb(null)
+        cb(err)
       });
   }
-  this.logout = function(){
+  this.logout = function(cb){
     console.log('should logout')
     localStorage.removeItem("userApp.me")
+    $http.defaults.headers.common.Authorization = '';
+    cb();
   }
 }
