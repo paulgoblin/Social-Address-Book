@@ -10,7 +10,7 @@ function StoreSvc($http){
 
   this.saveData = function(key, info){
     data[key] = info;
-    console.log(data);
+    console.log('data from store', data);
   }
   this.returnData = function(key){
     return data[key];

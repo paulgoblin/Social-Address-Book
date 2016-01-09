@@ -9,8 +9,6 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state){
   landing_page.login = login;
   landing_page.register = register;
 
-  LoginSvc.setAuthHeader($rootScope.LS.get('token'));
-
   function showRegister(){
     landing_page.formToShow = 'register';
   }

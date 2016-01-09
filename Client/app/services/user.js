@@ -3,5 +3,5 @@ angular
   .service('UserSvc', [UserSvc]);
 
 function UserSvc(){
-  console.log('asdassa')
+  console.log('inside user svc')
 }

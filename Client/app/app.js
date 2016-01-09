@@ -17,5 +17,5 @@ function LS(localStorageServiceProvider){
 }
 
 function RS($rootScope, localStorageService) {
-  $rootScope.LS = localStorageService
+  $rootScope.LS = localStorageService;
 }
