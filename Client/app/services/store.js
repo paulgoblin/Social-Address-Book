@@ -12,7 +12,23 @@ function StoreSvc(){
     data[key] = info;
   }
   this.returnData = function(key){
-    return data[key];
+    console.log('original data', data);
+    var clone = shallowCloneObject(data);
+    return clone[key];
+  }
+
+  function shallowCloneObject(obj) {
+    if (obj === null || typeof obj !== 'object') {
+      return obj;
+    }
+ 
+    var temp = obj.constructor(); // give temp the original obj's constructor
+    
+    for (var key in obj) {
+      temp[key] = shallowCloneObject(obj[key]);
+    }
+ 
+    return temp;
   }
 
 }

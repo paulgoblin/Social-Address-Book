@@ -7,12 +7,13 @@ function UserSvc($http){
   this.edit = function(data, cb){
     $http({
       method: 'PUT',
-      url: '/users',
+      url: '/API/users',
       data: data
     }).then(function(resp){
-      cb(resp)
+      cb(null,resp)
     }, function(err){
       cb(err)
     });
   }
+
 }

@@ -12,13 +12,13 @@ let User,
 let userSchema = Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  email: {type:String},
+  email: {type:String, default: ' '},
   favorites: [{type:Schema.Types.ObjectId, ref: User}],
-  profilename: String,
+  profilename: {type: String, default:' '},
   isAdmin: {type:Boolean, default:false},
-  phone: String,
-  address: String,
-  about:String
+  phone: {type:String, default:' '},
+  address: {type: String, default:' '},
+  about:{type: String, default:' '}
 });
 
 userSchema.methods.token = function() {
