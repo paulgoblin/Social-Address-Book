@@ -1,21 +1,3 @@
-<!-- <<<<<<< HEAD -->
-<!-- <div class="container users_list"> -->
-<!--   <div class="content" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)" ng-class="{ 'cardIsActive' : activeCards[user._id] }"> -->
-<!--     <div class="miniBar"> -->
-<!--       <span class="favStar"> -->
-<!--         <i class="fa" ng-class=" isFav(user._id)? 'fa-star' : 'fa-star-o' " ng-click="makeFav(user._id); $event.stopPropagation();"></i> -->
-<!--       </span> -->
-<!--       <img class="thumbAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt=""> -->
-<!--       <span class="userName" >{{user.username}}</span> -->
-<!--       <span class="editBtns" ng-if="true"> -->
-<!--         <span class="edit" ng-click="editInfo(user._id); $event.stopPropagation();"><i class="fa fa-edit"></i></span> -->
-<!--         <span class="trash" ng-click="deleteUser(user._id); $event.stopPropagation();"><i class="fa fa-trash"></i></span> -->
-<!--       </span> -->
-<!--     </div> -->
-<!--     <div class="fullBar" > -->
-<!--       <div class="avatarContainer"> -->
-<!--         <img class="fullAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt=""> -->
-<!-- ======= -->
 <div class="container">
   <div class="row users_list">
     <div class="columns small-12">
@@ -25,11 +7,11 @@
         </div>
         <div class="small-3 columns">
           <div class="viewFavorites button small-push-1 columns">Favorites</div>
-        </div>  
+        </div>
       </div>
-      
-      <div class="content row" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)" ng-class="{ 'cardIsActive' : activeCards[user._id] }">
-        
+      <div class="content row" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)"
+      ng-class="{ 'cardIsActive' : activeCards[user._id] }", ng-hide='user._id === me._id'>
+
         <div class="miniBar small-12 columns">
           <img class="thumbAvatar columns small-1" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
           <span class="userName columns small-1" >{{user.username}}</span>
@@ -42,7 +24,7 @@
             </span>
           </span>
         </div>
-        
+
         <div class="fullBar" >
           <div class="avatarContainer">
             <img class="fullAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
@@ -50,7 +32,7 @@
           <div class="fullInfo">
             <!-- Should mirror what is in home. Make it look good! -->
           </div>
-        </div>        
+        </div>
       </div>
     </div>
   </div>
