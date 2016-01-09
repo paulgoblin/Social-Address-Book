@@ -23,4 +23,5 @@ function UserSvc($http){
       cb(err)
     });
   }
+
 }

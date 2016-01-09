@@ -25,14 +25,50 @@ angular
 });
 
 function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
-  var user = StoreSvc.returnData('me')
-  $scope.user = user;
+
+  function updateView (){
+    var user = StoreSvc.returnData('me')
+    var User = {
+      'Profile Name': user.profilename,
+      Email: user.email,
+      'Phone Number': user.phone,
+      Address: user.address,
+      Bio: user.about
+    };
+
+    $scope.user = User;
+    return user;
+  }
+  
+  var user = updateView();
   $scope.modalShown = false;
+
   $scope.toggleModal = function(){
     $scope.modalShown = !$scope.modalShown;
     console.log('modalShown')
   }
   $scope.save = function(){
+    user.profilename = $scope.user['Profile Name'];
+    user.email = $scope.user.Email;
+    user.phone = $scope.user['Phone Number'];
+    user.address = $scope.user.Address;
+    user.about = $scope.user.Bio;
+    console.log(user);
+    UserSvc.edit(user, function (err, resp){
+      if (err){
+        console.log(err);
+        updateView();
+      }else{
+        StoreSvc.saveData('me', resp.data.user);
+      }
 
+    });
+    $scope.modalShown = !$scope.modalShown;
+  }
+  $scope.delete = function(){
+    console.log('should delete')
   }
 }
+
+
+
