@@ -26,7 +26,5 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
     $scope.activeCards[_id] = !$scope.activeCards[_id];
   }
 
-
-
 }
 
