@@ -183,8 +183,14 @@ p {
  /*  USERS  */
 /*---------*/
 
-* {
+ * {
   /*border: 1px solid red;*/
+}
+
+.content {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #57c4e5;
 }
 
 .viewFavorites {
@@ -192,18 +198,38 @@ p {
   height: 37px;
   padding: 8px;
   margin-bottom: 16px;
+  border-radius: 5px;
 }
 
+/* miniBar styling */
+.miniBar {
+  background-color: #333333;
+  border-radius: 5px;
+}
+
+.favStar, .editBtns {
+  text-align: center;
+  padding: 10px
+}
+
+.thumbAvatar {
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.userName, .about {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* fullBar styling */
 .fullBar {
   display: none;
 }
 
 .cardIsActive .fullBar{
   display: block;
-}
-
-.thumbAvatar {
-  width: 50px;
 }
 
 .fullAvatar {

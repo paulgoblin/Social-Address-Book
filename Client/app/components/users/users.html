@@ -8,14 +8,15 @@
     </div>  
   </div>
 
-  <div class="content" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)" ng-class="{ 'cardIsActive' : activeCards[user._id] }">
-    <div class="miniBar">
-      <span class="favStar">
+  <div class="content row" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)" ng-class="{ 'cardIsActive' : activeCards[user._id] }">
+    <div class="miniBar small-12 columns">
+      <span class="favStar small-1 columns">
         <i class="fa" ng-class=" user.isFav ? 'fa-star' : 'fa-star-o' " ng-click="makeFav(user._id); $event.stopPropagation();"></i>
       </span>
-      <img class="thumbAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
-      <span class="userName" >{{user.username}}</span>
-      <span class="editBtns" ng-if="true">
+      <img class="thumbAvatar columns small-1" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
+      <span class="userName columns small-2" >{{user.username}}</span>
+      <span class="about columns small-7" >{{user.about}}</span>
+      <span class="editBtns columns small-1" ng-if="true">
         <span class="edit" ng-click="editInfo(user._id); $event.stopPropagation();"><i class="fa fa-edit"></i></span>
         <span class="trash" ng-click="deleteUser(user._id); $event.stopPropagation();"><i class="fa fa-trash"></i></span>
       </span>
