@@ -1,21 +1,21 @@
 <div class="container user_profile_page">
   <div class="content">
     <img src="https://i.ytimg.com/vi/UKp2CrfmVfw/maxresdefault.jpg" alt="Alessia Cara" class="avatar large-3 columns">
-    <div>
-      <p><em>Username:</em> {{user.username}} </p>
+    <div class="profile_label">
+      <p><em>Username:</em> <span class="profile_info"> {{user.username}} </span> </p>
     </div>
-    <div class="profile_info large-offset-2">
-      <p> <em>Profile Name:</em> {{user.profilename}} </p>
+    <div class="profile_label large-offset-2">
+      <p> <em>Profile Name:</em> <span class="profile_info"> {{user.profilename}} </span> </p>
     </div>
-    <div class="profile_info large-offset-3">
-      <p> <em>Email:</em> {{user.email}} </p>
+    <div class="profile_label large-offset-3">
+      <p> <em>Email:</em> <span class="profile_info"> {{user.email}} </span> </p>
     </div>
-    <div class="profile_info large-offset-3">
-      <p> <em>Phone Number:</em>{{ user.phone}} </p>
+    <div class="profile_label large-offset-3">
+      <p> <em>Phone Number:</em><span class="profile_info"> {{ user.phone}} </span> </p>
     </div>
-    <div class="profile_info large-offset-3">
+    <div class="profile_label large-offset-3">
       <em>Address:</em>
-      <p> {{user.address}} </p>
+      <p> <span class="profile_info">{{user.address}}</span> </p>
     </div>
 <!--     <div class="profile_info large-offset-3">
       <p> <em>Twitter:</em> Username.twitter_handle</p>
@@ -23,8 +23,8 @@
     <div class="profile_info large-offset-3">
       <p> <em>Github:</em>Username.github</p>
     </div> -->
-    <div class="profile_info large-offset-3">
-      <em>Bio</em><p> {{user.about}} </p>
+    <div class="profile_label large-offset-3">
+      <em>Bio</em><p> <span class="profile_info">{{user.about}}</span> </p>
     </div>
   </div>
   <button class="button" ng-click='toggleModal()'>Edit</button>
@@ -35,6 +35,6 @@
     <label>Phone Number:<input type="text" placeholder="123-456-7890"></label>
     <label>Address: <input type="text" placeholder="123 Hollywood Blvd, Hollywood, CA 90028"></label>
     <label>Bio: <textarea cols="20" rows="4" maxlength="250" placeholder="A little bit about yourself..."></textarea></label>
-    <button ng-click="save">Save</button>
+    <button ng-click="save(val)">Save</button>
   </modal>
 </div>
