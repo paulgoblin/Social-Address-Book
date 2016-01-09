@@ -82,6 +82,7 @@ textarea#bio {
 
 .users_list {
   border: 2px dotted black;
+  color: black;
 }
 
 .avatar_phone_number #phone_number {
@@ -160,6 +161,7 @@ p {
   color: orange;
 }
 
+<<<<<<< HEAD
 .navigation {
   padding-left: 9px;
   padding-top: 7px;
@@ -173,3 +175,21 @@ p {
 .navigation:hover, .home:hover {
   cursor: pointer;
 }
+=======
+.fullBar {
+  display: none;
+}
+
+.cardIsActive .fullBar{
+  display: block;
+}
+
+.thumbAvatar {
+  width: 50px;
+}
+
+.fullAvatar {
+  height: 200px;
+}
+
+>>>>>>> 2b1b3574d1007d9708ac46373325e4daea99b3db

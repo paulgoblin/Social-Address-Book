@@ -1,53 +1,23 @@
 <div class="container users_list">
-  <div class="content">
-
-    <div class="avatar_phone_number large-2 columns">
-      <img src="https://i.ytimg.com/vi/UKp2CrfmVfw/maxresdefault.jpg" alt="Alessia Cara" class="avatar">
-      <p id="phone_number"><em>Phone Number:</em> Username.phone_number</p>
+  <div class="content" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)" ng-class="{ 'cardIsActive' : activeCards[user._id] }">
+    <div class="miniBar">
+      <span class="favStar">
+        <i class="fa" ng-class=" user.isFav ? 'fa-star' : 'fa-star-o' " ng-click="makeFav(user._id); $event.stopPropagation();"></i>
+      </span>
+      <img class="thumbAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
+      <span class="userName" >{{user.username}}</span>
+      <span class="editBtns" ng-if="true">
+        <span class="edit" ng-click="editInfo(user._id); $event.stopPropagation();"><i class="fa fa-edit"></i></span>
+        <span class="trash" ng-click="deleteUser(user._id); $event.stopPropagation();"><i class="fa fa-trash"></i></span>
+      </span>
     </div>
-
-    <div class="profile_info ">
-      <p large-offset-3> <em>Name:</em> Username.name <em>Twitter:</em> Username.twitter_handle</p>
-    </div>
-    <div class="profile_info">
-      <p large-offset-3> <em>Email:</em>Username.email <em>Github:</em>Username.github</p>
-    </div>
-    <div class="profile_info large-offset-3">
-      <em>Address:</em>
-      <p>Username.street_name <br>Username.city_state_zip_code</p>
-    </div>
-
-    <div class="profile_info large-offset-3">
-      <em>Bio</em>
-      <textarea cols="35" rows="4" maxlength="350" id="bio"></textarea>
+    <div class="fullBar" >
+      <div class="avatarContainer">
+        <img class="fullAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
+      </div>
+      <div class="fullInfo">
+        <!-- Should mirror what is in home. Make it look good! -->
+      </div>
     </div>
   </div>
 </div>
-
-<!--
- <div ng-controller="AccordionDemoCtrl">
-  <label class="checkbox">
-    <input type="checkbox" ng-model="oneAtATime">
-    Open only one at a time
-  </label>
-
-  <accordion close-others="oneAtATime">
-    <accordion-group heading="Static Header, initially expanded" is-open="true">
-      This content is straight in the template.
-    </accordion-group>
-    <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-      {{group.content}}
-    </accordion-group>
-    <accordion-group heading="Dynamic Body Content">
-      <p>The body of the accordion group grows to fit the contents</p>
-        <button class="button small" ng-click="addItem()">Add Item</button>
-        <div ng-repeat="item in items">{{item}}</div>
-    </accordion-group>
-    <accordion-group is-open="isopen">
-        <accordion-heading>
-            I can have markup, too! <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
-        </accordion-heading>
-        This is just some content to illustrate fancy headings.
-    </accordion-group>
-  </accordion>
-</div> -->
