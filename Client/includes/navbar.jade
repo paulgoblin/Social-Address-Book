@@ -1,13 +1,13 @@
 nav.top-bar(data-topbar='', role='navigation' ng-controller="NavbarCtrl")
   ul.title-area
     li.name(ng-click="home()")
-      h1 My Site
+      h1.home My Site
     li.toggle-topbar.menu-icon
       a(ui-sref='home')
         span Menu
   section.top-bar-section
     ul.right
       div()
-        li(ng-click="home()") Home
-        li(ng-click="users()") Users
-        li(ng-click="logout()") Logout
+        li.navigation(ng-click="home()") Home
+        li.navigation(ng-click="users()") Users
+        li.navigation(ng-click="logout()") Logout
