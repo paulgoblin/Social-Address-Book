@@ -15,7 +15,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   }
 
   $scope.makeFav = (_id) => {
-    UserSvc.edit(_id , favRespHandler)
+    UserSvc.edit(_id , favRespHandler);
   }
 
   $scope.editInfo = (_id) => {
@@ -32,11 +32,15 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
 
   function favRespHandler (err, res) {
     if (err) return console.log( err );
+
     var updatedUser = res.data;
     $scope.users.find(user => {
       return user._id === updatedUser._id;
     }).favorites = updatedUser.favorites;
     StoreSvc.saveData('users', $scope.users);
+    StoreSvc.saveData('me', updatedUser);
+    $scope.users = StoreSvc.returnData("users");
+    $scope.me = StoreSvc.returnData("me");
   }
 
 }
