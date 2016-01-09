@@ -1,3 +1,4 @@
+'use strict';
 angular
   .module('userApp')
   .service('UserSvc', ['$http', UserSvc]);
