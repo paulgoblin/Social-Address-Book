@@ -35,7 +35,7 @@ router.post('/admin', function (req, res){
       res.status(err ? 400 : 200).send(err || newAdmin);
     })
   }else{
-    res.status(400).send('You are not authorized to do this action');
+    res.status(403).send('You are not authorized to do this action');
   }
 })
 
@@ -51,7 +51,7 @@ router.put('/', function (req, res){
       res.status(err ? 400 : 200).send(err || updatedUser);
     })
   }else{
-    res.status(400).send('You are not authorized to do this action');
+    res.status(403).send('You are not authorized to do this action');
   }
 })
 
@@ -67,7 +67,7 @@ router.delete('/', function (req, res){
       res.status(err ? 400 : 200).send(err || 'removed');
     })
   }else{
-    res.status(400).send('You are not authorized to do this action');
+    res.status(403).send('You are not authorized to do this action');
   }
 })
 
