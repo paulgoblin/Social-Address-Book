@@ -1,37 +1,32 @@
+'use strict';
 angular
-  .module('app.users', [])
-  .controller('UsersCtrl', ['UserSvc', UsersCtrl]);
+  .module('userApp')
+  .controller('UsersCtrl', ['$scope', 'UserSvc', 'StoreSvc', UsersCtrl]);
 
-function UsersCtrl(UserSvc){
-  var users = this;
+function UsersCtrl($scope, UserSvc, StoreSvc){
+  $scope.activeCards = {};
+  $scope.users = StoreSvc.returnData("users");
+
+  $scope.makeFav = (_id) => {
+    $scope.users.forEach( user => {
+      if (user._id === _id) user.isFav = !user.isFav;
+    // update DB and then change local .isFav
+    })
+  }
+
+  $scope.editInfo = (_id) => {
+    console.log('youre editing my info!')
+  }
+
+  $scope.deleteUser = (_id) => {
+    alert("ARE YOU FREAKIN SURE?")
+  }
+
+  $scope.toggleActive = function(_id) {
+    $scope.activeCards[_id] = !$scope.activeCards[_id];
+  }
+
+
+
 }
 
-
-
-
-
-// angular
-//   .module('app.users',[])
-//   .controller('AccordionDemoCtrl', ['$scope', AccordionDemoCtrl]);
-
-// function AccordionDemoCtrl($scope) {
-//     $scope.oneAtATime = true;
-
-//     $scope.groups = [
-//       {
-//         title: "Dynamic Group Header - 1",
-//         content: "Dynamic Group Body - 1"
-//       },
-//       {
-//         title: "Dynamic Group Header - 2",
-//         content: "Dynamic Group Body - 2"
-//       }
-//     ];
-
-//     $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-
-//     $scope.addItem = function() {
-//       var newItemNo = $scope.items.length + 1;
-//       $scope.items.push('Item ' + newItemNo);
-//     };
-// };

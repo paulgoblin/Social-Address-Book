@@ -21,6 +21,6 @@ function AppRoutes($stateProvider, $urlRouterProvider, $locationProvider){
      .state('users', {
       url: '/users',
       templateUrl: 'app/components/users/users.html',
-      controller: 'UsersCtrl as users'
+      controller: 'UsersCtrl'
     })
 }
