@@ -29,6 +29,7 @@ function NavSvc($http){
   this.logout = function(cb){
     console.log('should logout')
     localStorage.removeItem("userApp.me")
+    localStorage.removeItem("userApp.token")
     $http.defaults.headers.common.Authorization = '';
     cb();
   }
