@@ -65,6 +65,9 @@ function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
     });
     $scope.modalShown = !$scope.modalShown;
   }
+  $scope.delete = function(){
+    console.log('should delete')
+  }
 }
 
 
