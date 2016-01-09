@@ -1,3 +1,39 @@
+  /*-------*/
+ /*  ALL  */
+/*-------*/
+
+/* navbar */
+.top-bar {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.top-bar .name {
+  margin-left: 10px;
+}
+
+.top-bar-section ul li {
+  background-color: rgba(0, 0, 0, 0);
+  padding-right: 5px;
+  padding-top: 10px;
+  margin-right: 10px;
+}
+
+.name h1 {
+  color: #fff;
+}
+
+img#wallpaper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -5555;
+}
+
+.top-bar li:hover {
+  color: #929AA9;
+}
+
+/* footer */
 .footer_copyright {
   height: 33px;
   margin: auto;
@@ -8,19 +44,14 @@
   bottom: 0;
   position: fixed;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
+  padding-top: 10px;
 }
 
-h1 {
-  color: #fff;
-}
-
-img#wallpaper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -5555;
-}
+  /*----------------*/
+ /*  LANDING PAGE  */
+/*----------------*/
 
 .register_login_dashboard {
   text-align: center;
@@ -58,6 +89,16 @@ html body {
   color: #fff;
 }
 
+.r_l_inputs {
+  width: 300px;
+  display: block;
+  text-align: center;
+}
+
+  /*--------*/
+ /*  HOME  */
+/*--------*/
+
 .avatar {
   max-width: 250px;
   max-height: 250px;
@@ -80,10 +121,6 @@ textarea#bio {
   margin-top: 15px;
 }
 
-.users_list {
-  border: 2px dotted black;
-  color: black;
-}
 
 .avatar_phone_number #phone_number {
   visibility: hidden;
@@ -101,7 +138,7 @@ textarea#bio {
   margin-top: 15px;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
 }
@@ -174,16 +211,82 @@ p {
 .navigation:hover, .home:hover {
   cursor: pointer;
 }
+  /*---------*/
+ /*  USERS  */
+/*---------*/
+
+.users_list {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  min-height: 80vh;
+}
+
+ .users_list * {
+  /*border: 1px solid red;*/
+}
+
+.users_list .row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.content {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #E5E5E7;
+}
+
+.viewFavorites {
+  width: 200px;
+  height: 37px;
+  padding: 8px;
+  margin-bottom: 16px;
+  border-radius: 5px;
+}
+
+
+/* miniBar styligng */
+.miniBar {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  padding-left: 0px;
+}
+
+.editBtns {
+  text-align: right;
+  padding: 10px 0 10px 0;
+}
+
+.thumbAvatar {
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  max-height: 44px;
+}
+
+
+.userName {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: right;
+  font-size: 1.2em;
+  padding-right: 5px;
+}
+
+.about {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-style: italic;
+  padding-left: 5px;
+}
+
+/* fullBar styling */
 .fullBar {
   display: none;
 }
 
 .cardIsActive .fullBar{
   display: block;
-}
-
-.thumbAvatar {
-  width: 50px;
 }
 
 .fullAvatar {
