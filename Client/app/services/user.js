@@ -1,7 +1,17 @@
 angular
-  .module('UserSvc', [])
-  .service('UserSvc', [UserSvc]);
+  .module('userApp')
+  .service('UserSvc', ['$http', UserSvc]);
 
-function UserSvc(){
-  console.log('asdassa')
+function UserSvc($http){
+  this.edit = function(data, cb){
+    $http({
+      method: 'PUT',
+      url: '/users',
+      data: data
+    }).then(function(resp){
+      cb(resp)
+    }, function(err){
+      cb(err)
+    });
+  }
 }

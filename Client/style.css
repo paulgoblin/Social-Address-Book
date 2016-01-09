@@ -100,6 +100,63 @@ textarea#bio {
   margin-top: 15px;
 }
 
-accordion {
-  color: black;
+body{
+  margin: 0;
+  padding: 0;
 }
+
+.reveal-modal{
+  min-height: 300px;
+}
+
+.ng-modal {
+  transition: 0.2s ease-in-out opacity;
+}
+
+.ng-modal .reveal-modal {
+  display: block;
+  visibility: visible;
+}
+
+.ng-modal .reveal-modal-bg {
+  display: block;
+}
+
+.ng-modal.ng-hide-add,
+.ng-modal.ng-hide-remove{
+  display: block !important;
+}
+
+.ng-modal.ng-hide{
+  opacity: 0;
+}
+
+.reveal-modal{
+  transition: 0.2s ease-in-out all;
+  transition-delay: 0.2s;
+  -webkit-transform: scale(1);
+  opacity: 1;
+}
+
+.reveal-modal.ng-hide-add,
+.reveal-modal.ng-hide-remove{
+  display: block !important;
+}
+
+.reveal-modal.ng-hide{
+  -webkit-transform: scale(0.9);
+  opacity: 0;
+}
+
+.demo .button{
+  margin: 60px auto 0;
+}
+
+.demo .button, .demo .button:focus{
+  outline: none;
+}
+
+p {
+  color: orange;
+}
+
