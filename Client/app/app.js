@@ -2,7 +2,6 @@ angular
   .module('userApp', [
     'ui.router',
     'app.routes',
-    'app.users',
     'app.landing_page',
     'LocalStorageModule',
     'LoginSvc'

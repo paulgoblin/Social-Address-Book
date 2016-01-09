@@ -82,6 +82,7 @@ textarea#bio {
 
 .users_list {
   border: 2px dotted black;
+  color: black;
 }
 
 .avatar_phone_number #phone_number {
@@ -158,5 +159,21 @@ body{
 
 p {
   color: orange;
+}
+
+.fullBar {
+  display: none;
+}
+
+.cardIsActive .fullBar{
+  display: block;
+}
+
+.thumbAvatar {
+  width: 50px;
+}
+
+.fullAvatar {
+  height: 200px;
 }
 

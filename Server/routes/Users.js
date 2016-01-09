@@ -29,30 +29,26 @@ router.post('/favorites', function (req, res){
 })
 
 router.post('/admin', function (req, res){
-  if (req.isAdmin){
-    console.log('isAdmin');
-    User.findByIdAndUpdate(req.body.id, {isAdmin: true}, function (err, newAdmin){
-      res.status(err ? 400 : 200).send(err || newAdmin);
-    })
-  }else{
-    res.status(403).send('You are not authorized to do this action');
-  }
+  if (!req.isAdmin) return res.status(403).send('You are not authorized to do this action');
+  User.findByIdAndUpdate(req.body.id, {isAdmin: true}, function (err, newAdmin){
+    res.status(err ? 400 : 200).send(err || newAdmin);
+  })
 })
 
 router.put('/', function (req, res){
-  if (req.userId === req.body.id){
-    console.log('same');
+  if (req.userId === req.body.id || isAdmin){
     User.findByIdAndUpdate(req.userId, req.body, function (err, updatedUser){
       res.status(err ? 400 : 200).send(err || updatedUser);
     })
-  }else if (req.isAdmin){
-    console.log('admin')
-    User.findByIdAndUpdate(req.body.id, req.body, function (err, updatedUser){
-      res.status(err ? 400 : 200).send(err || updatedUser);
-    })
-  }else{
-    res.status(403).send('You are not authorized to do this action');
+  
+  // else if (req.isAdmin){
+  //   console.log('admin')
+  //   User.findByIdAndUpdate(req.body.id, req.body, function (err, updatedUser){
+  //     res.status(err ? 400 : 200).send(err || updatedUser);
+  //   })
+  // }else{
   }
+  res.status(403).send('You are not authorized to do this action');
 })
 
 router.delete('/', function (req, res){
