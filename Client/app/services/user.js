@@ -7,10 +7,18 @@ function UserSvc($http){
   this.edit = function(data, cb){
     $http({
       method: 'PUT',
-      url: '/users',
+      url: '/API/users',
       data: data
     }).then(function(resp){
-      cb(resp)
+      cb(null,resp)
+    }, function(err){
+      cb(err)
+    });
+  }
+  this.edit = function(favId, cb){
+    $http.post('/API/users/favorites', {favId: favId})
+    .then(function(resp){
+      cb(null,resp)
     }, function(err){
       cb(err)
     });

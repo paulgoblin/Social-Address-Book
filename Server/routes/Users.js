@@ -23,8 +23,10 @@ router.get('/me', function(req, res){
 
 router.post('/favorites', function (req, res){
   console.log(req.body, req.userId);
-  User.findByIdAndUpdate(req.userId, {$addToSet: {favorites:req.body.favorites}}, function (err, updatedUser){
-    res.status(err ? 400 : 200).send(err || updatedUser);
+  User.findById(req.userId, function (err, user){
+    user.toggleFavorite(req.body.favId, function(err){
+      res.status(err ? 400 : 200).send(err || user);
+    })
   });
 })
 
@@ -40,7 +42,7 @@ router.put('/', function (req, res){
     User.findByIdAndUpdate(req.userId, req.body, function (err, updatedUser){
       res.status(err ? 400 : 200).send(err || updatedUser);
     })
-  
+
   // else if (req.isAdmin){
   //   console.log('admin')
   //   User.findByIdAndUpdate(req.body.id, req.body, function (err, updatedUser){
