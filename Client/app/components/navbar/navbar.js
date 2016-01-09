@@ -24,7 +24,7 @@ function NavbarCtrl($scope, $state, NavSvc, StoreSvc){
         $state.go('landing_page')
       } else if (resp.status >= 400 && resp.status !== 401){
         console.log(resp)
-      }else{
+      } else {
         StoreSvc.saveData('users', resp.data);
         $state.go('users')
       }

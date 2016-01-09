@@ -7,7 +7,7 @@ NavSvc.$inject = ['$http']
 
 function NavSvc($http){
   this.home = function(cb){
-    $http.get('/noHash/users/me')
+    $http.get('/API/users/me')
       .then(function(resp){
         console.log(resp)
         cb(resp)
@@ -17,9 +17,8 @@ function NavSvc($http){
       });
   }
   this.users = function(cb){
-    $http.get('/noHash/users')
+    $http.get('/API/users')
       .then(function(resp){
-        console.log(resp)
         cb(resp)
       }, function(err){
         console.log(err)
@@ -27,8 +26,7 @@ function NavSvc($http){
       });
   }
   this.logout = function(cb){
-    console.log('should logout')
-    localStorage.removeItem("userApp.me")
+    localStorage.removeItem("userApp.me");
     localStorage.removeItem("userApp.token")
     $http.defaults.headers.common.Authorization = '';
     cb();
