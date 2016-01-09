@@ -8,6 +8,7 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state, StoreSvc){
   landing_page.showLogin = showLogin;
   landing_page.login = login;
   landing_page.register = register;
+  landing_page.back = back;
 
   function showRegister(){
     landing_page.formToShow = 'register';
@@ -26,6 +27,16 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state, StoreSvc){
     var promise = LoginSvc.login(input);
     loginResHandler( promise );
   }
+
+  function back(){
+    console.log('back back')
+    $state.transitionTo($state.current, {}, {reload: true, inherit:false, notify:true})
+  }
+
+  // function back(){
+  //   console.log('back back')
+  //   $state.go('landing_page')
+  // }
 
   function loginResHandler(promise){
     promise.then(function(res){
