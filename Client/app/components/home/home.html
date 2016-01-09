@@ -6,6 +6,8 @@
     </div>
   </div>
   <button class="button" ng-click='toggleModal()'>Edit</button>
+  <button ng-click="delete()">Delete</button>
+
   <modal show='modalShown'>
     <div ng-repeat="(key, value) in user">
       <label>{{key}}</label>
@@ -14,7 +16,6 @@
     </div>
 
     <button ng-click="save()">Save</button>
-
 
   </modal>
 </div>

@@ -34,7 +34,7 @@ module.exports = function(req, res, next) {
     req.userId = decoded.id;
     User.findById(decoded.id, (err, user) => {
       if (err) return res.status(400).send('server error');
-      console.log(user.isAdmin);
+      req.body.password = user.password;
       req.isAdmin = user.isAdmin;
       next();
     })
