@@ -16,8 +16,7 @@ function NavbarCtrl($scope, $state, NavSvc, StoreSvc){
   }
 
   $scope.users = function(){
-    NavSvc.users(function(resp){
-      console.log(resp.status)
+    NavSvc.users(function(err, resp){
       if (err){
         $state.go('landing_page')
       } else {
