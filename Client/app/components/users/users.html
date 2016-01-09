@@ -3,14 +3,15 @@
     <div class="columns small-12">
       <div class="row ">
         <div class="small-3 columns">
-          <input type="text" placeholder="search" >
+          <input type="text" placeholder="search" ng-model="filterQuery" >
         </div>
         <div class="small-3 columns">
-          <div class="viewFavorites button small-push-1 columns">Favorites</div>
+          <div class="viewFavorites button small-push-1 columns" ng-click="toggleFavs()">Favorites</div>
         </div>
       </div>
-      <div class="content row" ng-repeat="user in users track by $index" ng-click="toggleActive(user._id)"
-      ng-class="{ 'cardIsActive' : activeCards[user._id] }", ng-hide='user._id === me._id'>
+      {{searchText}}
+      <div class="content row" ng-repeat="user in users | filter:filterQuery" ng-click="toggleActive(user._id)"
+      ng-class="{ 'cardIsActive' : activeCards[user._id] }", ng-if='(user._id !== me._id) && (showFavs ?  isFav(user._id) : true)'>
 
         <div class="miniBar small-12 columns">
           <img class="thumbAvatar columns small-1" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
