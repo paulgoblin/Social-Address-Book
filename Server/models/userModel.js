@@ -88,6 +88,16 @@ userSchema.statics.register = function(userInfo, cb) {
   });
 };
 
+userSchema.methods.toggleFavorite = function(togId, cb){
+  var foundFavIndex = this.favorites.indexOf(togId);
+  if (foundFavIndex===-1) {
+    this.favorites.push(togId)
+  } else {
+    this.favorites.splice([foundFavIndex],1);
+  }
+  this.save(cb)
+}
+
 
 User = mongoose.model('User', userSchema);
 module.exports = User;

@@ -27,6 +27,10 @@
       <em>Bio</em><p> {{user.about}} </p>
     </div>
   </div>
+  <div class="fileUpload">
+    <label for="avatarFileToUpload"></label>
+    <input type="file" name="avatarFileToUpload" id="avatarFileToUpload">
+  </div>
   <button class="button" ng-click='toggleModal()'>Edit</button>
   <modal show='modalShown'>
     <label>Username:<input type="text" placeholder="PaulGangstaCarrots"></label>
