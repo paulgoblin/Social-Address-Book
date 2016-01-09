@@ -160,3 +160,16 @@ p {
   color: orange;
 }
 
+.navigation {
+  padding-left: 9px;
+  padding-top: 7px;
+  padding-right: 11px;
+}
+
+.home {
+  padding-left: 15px;
+}
+
+.navigation:hover, .home:hover {
+  cursor: pointer;
+}
