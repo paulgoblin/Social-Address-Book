@@ -110,19 +110,45 @@ img#wallpaper {
   /*--------*/
  /*  HOME  */
 /*--------*/
-
-.avatar {
-  max-width: 250px;
-  max-height: 250px;
-  min-height: 250px;
-  min-width: 250px;
-  border-radius: 12px;
-  margin-bottom: 50px;
-  top: 31px;
+.users_list, .user_profile_page {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  min-height: 80vh;
+  margin-top: 36px;
 }
 
-.content {
-  color: #000;
+.cropAvatar {
+  width: 330px;
+  overflow: hidden;
+}
+
+.avatar {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.content * {
+  /*border: 1px solid red;*/
+}
+
+.user_profile_page .content {
+  color: #E5E5E7;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 0;
+}
+
+.profileKey {
+  text-align: right;
+  font-weight: 600;
+}
+
+#edit {
+  font-style: italic;
+  font-size: .8em;
+  cursor: pointer;
 }
 
 textarea#bio {
@@ -140,14 +166,6 @@ textarea#bio {
 
 .avatar_phone_number:hover #phone_number{
   visibility: visible;
-}
-
-.users_list{
-  margin-top: 36px;
-}
-
-.content {
-  margin-top: 15px;
 }
 
 body {
@@ -206,10 +224,6 @@ body {
   outline: none;
 }
 
-p {
-  color: orange;
-}
-
 .navigation {
   padding-left: 9px;
   padding-top: 7px;
@@ -227,18 +241,13 @@ p {
  /*  USERS  */
 /*---------*/
 
-.users_list {
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  min-height: 80vh;
-}
 
 .users_list .row {
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.content {
+.users_list .content {
   padding-left: 15px;
   padding-right: 15px;
   color: #E5E5E7;
@@ -250,7 +259,6 @@ p {
   padding: 8px;
   margin-bottom: 16px;
 }
-
 
 /* miniBar styligng */
 .miniBar {
