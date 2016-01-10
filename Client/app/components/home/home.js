@@ -56,11 +56,9 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
     $scope.user = User;
   }
 
-
-
   $scope.uploadAvatar = function(){
-    console.log("image stuff");
-    UserSvc.uploadAvatar({ _id: $scope.user._id, img: $scope.images.upload }, editResHandler)
+    console.log("image stuff", StoreSvc.returnData('me')._id);
+    UserSvc.uploadAvatar({ _id: StoreSvc.returnData('me')._id, img: $scope.images.upload }, editResHandler)
   }
 
   $scope.toggleModal = function(){

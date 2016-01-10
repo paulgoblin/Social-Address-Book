@@ -7,7 +7,8 @@
   </div>
 
   <form>
-    <input type='file' ng-model='images.upload' base-sixty-four-input ng-change="uploadAvatar()">
+    <input type='file' ng-model='images.upload' base-sixty-four-input>
+    <button ng-click="uploadAvatar()"> Upload! </button>
   </form>
 
   <button class="button" ng-click='toggleModal()'>Edit</button>
