@@ -1,6 +1,6 @@
 angular
   .module('userApp')
-  .controller('HomeCtrl', ['$scope', 'UserSvc', 'StoreSvc', 'NavSvc', '$state', HomeCtrl])
+  .controller('HomeCtrl', ['$scope', '$state', 'UserSvc', 'StoreSvc', 'NavSvc', HomeCtrl])
   .directive('modal', function() {
   return {
     restrict: 'E',
@@ -24,9 +24,11 @@ angular
   };
 });
 
-function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
+function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
   var user;
+  $scope.modalShown = false;
+  $scope.images = {};
 
   if (StoreSvc.returnData('me')){
     updateView();
@@ -54,9 +56,11 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
     $scope.user = User;
   }
 
-  // var user = updateView();
 
-  $scope.modalShown = false;
+
+  $scope.uploadAvatar = function(){
+    UserSvc.uploadAvatar({ _id: $scope.user._id, img: $scope.images.upload }, editResHandler)
+  }
 
   $scope.toggleModal = function(){
     $scope.modalShown = !$scope.modalShown;
@@ -69,15 +73,8 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
     user.address = $scope.user.Address;
     user.about = $scope.user.Bio;
 
-    UserSvc.edit(user, function (err, resp){
-      if (err){
-        console.log(err);
-        updateView();
-      }else{
-        StoreSvc.saveData('me', resp.data);
-      }
+    UserSvc.edit( user, editResHandler );
 
-    });
     $scope.modalShown = !$scope.modalShown;
   }
 
@@ -91,5 +88,15 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
         });
       }
     });
+  }
+
+  function editResHandler(err, resp){
+    if (err){
+      console.log(err);
+      updateView();
+    }else{
+      console.log(resp);
+      // StoreSvc.saveData('me', resp.data);
+    }
   }
 }
