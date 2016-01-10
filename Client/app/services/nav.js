@@ -10,7 +10,7 @@ function NavSvc($http){
     $http.get('/API/users/me')
       .then(function(resp){
         console.log(resp)
-        cb(resp)
+        cb(null, resp)
       }, function(err){
         console.log(err)
         cb(err)
@@ -19,7 +19,7 @@ function NavSvc($http){
   this.users = function(cb){
     $http.get('/API/users')
       .then(function(resp){
-        cb(resp)
+        cb(null,resp)
       }, function(err){
         console.log(err)
         cb(err)

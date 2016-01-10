@@ -237,11 +237,10 @@ body {
 .navigation:hover, .home:hover {
   cursor: pointer;
 }
+
   /*---------*/
  /*  USERS  */
 /*---------*/
-
-
 .users_list .row {
   margin-top: 15px;
   margin-bottom: 15px;

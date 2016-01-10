@@ -25,12 +25,13 @@
         </div>
       </div>
       <div class="row">
-      <span class="errorMessage columns small-12 medium-6 medium-push-3 large-4 large-push-4" ng-show="landing_page.err_msg">{{landing_page.err_msg}}</span>
+        <span class="errorMessage columns small-12 medium-6 medium-push-3 large-4 large-push-4" ng-show="landing_page.err_msg">{{landing_page.err_msg}}</span>
       </div>
       <div class="row">
         <button ng-hide="landing_page.formToShow === 'login'" ng-click="landing_page.register(input)">Register</button>
         <button ng-hide="landing_page.formToShow === 'register'" ng-click="landing_page.login(input)">Log In</button>
-        <button ng-show="landing_page.formToShow" ng-click="landing_page.cancel()">Cancel</button>
+        <button ng-hide="landing_page.formToShow === 'register'" ng-click="landing_page.back()">Back</button>
+        <button ng-hide="landing_page.formToShow === 'login'" ng-click="landing_page.back()">Back</button>
       </div>
     </div>
   </div>
