@@ -1,6 +1,6 @@
 angular
   .module('userApp')
-  .controller('HomeCtrl', ['$scope', 'UserSvc', 'StoreSvc', HomeCtrl])
+  .controller('HomeCtrl', ['$scope', 'UserSvc', 'StoreSvc', 'NavSvc', '$state', HomeCtrl])
   .directive('modal', function() {
   return {
     restrict: 'E',
@@ -24,10 +24,25 @@ angular
   };
 });
 
-function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
+function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
+
+  var user;
+
+  if (StoreSvc.returnData('me')){
+    updateView();
+  }else{
+    NavSvc.home(function (err, resp){
+      if (err) {
+        $state.go('landing_page');
+        return;
+      }
+      StoreSvc.saveData('me', resp.data);
+      updateView();
+    })
+  }
 
   function updateView (){
-    var user = StoreSvc.returnData('me')
+    user = StoreSvc.returnData('me')
     var User = {
       'Profile Name': user.profilename,
       Email: user.email,
@@ -37,23 +52,23 @@ function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
     };
 
     $scope.user = User;
-    return user;
   }
 
-  var user = updateView();
+  // var user = updateView();
+
   $scope.modalShown = false;
 
   $scope.toggleModal = function(){
     $scope.modalShown = !$scope.modalShown;
-    console.log('modalShown')
   }
+
   $scope.save = function(){
     user.profilename = $scope.user['Profile Name'];
     user.email = $scope.user.Email;
     user.phone = $scope.user['Phone Number'];
     user.address = $scope.user.Address;
     user.about = $scope.user.Bio;
-    console.log(user);
+
     UserSvc.edit(user, function (err, resp){
       if (err){
         console.log(err);
@@ -65,7 +80,16 @@ function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
     });
     $scope.modalShown = !$scope.modalShown;
   }
+
   $scope.delete = function(){
-    console.log('should delete')
+    UserSvc.delete(user, function(err, resp){
+      if (err){
+        console.log(err);
+      } else {
+        NavSvc.logout(function (){
+          $state.go('landing_page');
+        });
+      }
+    });
   }
 }
