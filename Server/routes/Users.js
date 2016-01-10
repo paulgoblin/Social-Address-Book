@@ -26,6 +26,7 @@ router.get('/me', function(req, res){
 router.post('/favorites', function (req, res){
   User.findById(req.userId, function (err, user){
     user.toggleFavorite(req.body.favId, function(err){
+      delete user.password;
       res.status(err ? 400 : 200).send(err || user);
     })
   });
@@ -34,6 +35,7 @@ router.post('/favorites', function (req, res){
 router.post('/admin', function (req, res){
   if (!req.isAdmin) return res.status(403).send('You are not authorized to do this action');
   User.findByIdAndUpdate(req.body.id, {isAdmin: true}, function (err, newAdmin){
+    delete newAdmin.password;
     res.status(err ? 400 : 200).send(err || newAdmin);
   })
 })
@@ -42,6 +44,7 @@ router.put('/', function (req, res){
   console.log(req.userId ===req.body._id)
   if (req.userId === req.body._id || req.isAdmin){
     User.findByIdAndUpdate(req.userId, req.body, function (err, updatedUser){
+      delete newAdmin.updatedUser;
       res.status(err ? 400 : 200).send(err || updatedUser);
     })
   }else{
@@ -60,10 +63,18 @@ router.delete('/', function (req, res){
 })
 
 router.post('/avatar', function(req, res){
+  console.log("id confirmation", req.userId, Object.keys(req.body));
   if (req.userId === req.body._id || req.isAdmin){
     Avatar.create( {img: {data: req.body.img.base64, contentType:'image/png'}} , function(err, newAvatar){
-      User.findById(req.userId)
-      res.status(200).send(updatedUser);
+      if (err) return res.status(400).send(err);
+      User.findById(req.userId, function(err, user){
+        if (err) return res.status(400).send(err);
+        user.avatar = newAvatar._id;
+        user.save(function(err){
+          user.avatar = newAvatar;
+          res.status(err ? 400 : 200).send(err || user);
+        })
+      })
     })
   }else{
     res.status(403).send('You are not authorized to do this action');
