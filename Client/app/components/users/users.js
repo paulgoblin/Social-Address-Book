@@ -7,6 +7,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   $scope.activeCards = {};
   $scope.users = StoreSvc.returnData("users");
   $scope.me = StoreSvc.returnData("me");
+  $scope.showFavs = false;
 
   $scope.isFav = (_id) => {
     return $scope.me.favorites.some(faved_id => {
@@ -15,7 +16,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   }
 
   $scope.makeFav = (_id) => {
-    UserSvc.edit(_id , favRespHandler);
+    UserSvc.toggleFav(_id , favRespHandler);
   }
 
   $scope.editInfo = (_id) => {
@@ -28,6 +29,10 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
 
   $scope.toggleActive = function(_id) {
     $scope.activeCards[_id] = !$scope.activeCards[_id];
+  }
+
+  $scope.toggleFavs = function(){
+    $scope.showFavs = !$scope.showFavs
   }
 
   function favRespHandler (err, res) {
