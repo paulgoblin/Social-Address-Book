@@ -39,7 +39,7 @@ function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
     $scope.user = User;
     return user;
   }
-  
+
   var user = updateView();
   $scope.modalShown = false;
 
@@ -59,7 +59,7 @@ function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
         console.log(err);
         updateView();
       }else{
-        StoreSvc.saveData('me', resp.data.user);
+        StoreSvc.saveData('me', resp.data);
       }
 
     });
@@ -69,6 +69,3 @@ function HomeCtrl($scope, UserSvc, StoreSvc, $modal, $log){
     console.log('should delete')
   }
 }
-
-
-

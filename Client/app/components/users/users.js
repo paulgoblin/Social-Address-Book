@@ -16,7 +16,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   }
 
   $scope.makeFav = (_id) => {
-    UserSvc.edit(_id , favRespHandler);
+    UserSvc.toggleFav(_id , favRespHandler);
   }
 
   $scope.editInfo = (_id) => {
