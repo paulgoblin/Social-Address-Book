@@ -245,6 +245,7 @@ body {
   margin-bottom: 15px;
 }
 
+
 .users_list .content {
   padding-left: 15px;
   padding-right: 15px;
@@ -294,12 +295,21 @@ body {
 
 /* fullBar styling */
 
-.content * {
+.fullBar * {
   /*border: 1px solid red;*/
+}
+
+.fullInfo .row {
+  margin: 0;
+}
+
+.userInfo .profileKey {
+  margin: 0;
 }
 
 .fullBar {
   display: none;
+  padding: 0;
 }
 
 .cardIsActive .fullBar{
