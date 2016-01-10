@@ -25,7 +25,6 @@ function UserSvc($http){
   }
 
   this.delete = function(data, cb){
-    console.log('delete', data);
     $http({
       method: 'DELETE',
       url: '/API/users',
@@ -36,6 +35,15 @@ function UserSvc($http){
     }, function(err){
       cb(err)
     });
+  }
+
+  this.uploadAvatar = function(updateData, cb){
+    $http.post('/API/users/avatar', updateData)
+    .then(function(resp){
+      cb(null, resp);
+    }, function(err){
+      cb(err);
+    })
   }
 
 }

@@ -5,10 +5,11 @@
       <p> <em>{{key}}</em> <span class="profile_info">{{value}}</span></p>
     </div>
   </div>
-  <div class="fileUpload">
-    <label for="avatarFileToUpload"></label>
-    <input type="file" name="avatarFileToUpload" id="avatarFileToUpload">
-  </div>
+
+  <form>
+    <input type='file' ng-model='images.upload' base-sixty-four-input ng-change="uploadAvatar()">
+  </form>
+
   <button class="button" ng-click='toggleModal()'>Edit</button>
   <button ng-click="delete()">Delete</button>
 
@@ -16,7 +17,7 @@
     <div ng-repeat="(key, value) in user">
       <label>{{key}}</label>
       <input type="text" ng-model="user[key]">
-       
+
     </div>
 
     <button ng-click="save()">Save</button>

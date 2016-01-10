@@ -11,7 +11,7 @@ module.exports = function(req, res, next) {
   }
 
   let token = req.headers.authorization.replace('Bearer ', '');
-  
+
   try {
     var decoded = jwt.decode(token, process.env.JWT_SECRET);
   } catch (e) {
@@ -34,7 +34,6 @@ module.exports = function(req, res, next) {
     req.userId = decoded.id;
     User.findById(decoded.id, (err, user) => {
       if (err) return res.status(400).send('server error');
-      console.log('middleware',req.body)
       req.body.password = user.password;
       req.isAdmin = user.isAdmin;
       next();

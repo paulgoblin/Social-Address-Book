@@ -1,6 +1,7 @@
 angular
   .module('userApp', [
     'ui.router',
+    'naif.base64',
     'app.routes',
     'app.landing_page',
     'LocalStorageModule',

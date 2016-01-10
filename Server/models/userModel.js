@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
     , jwt      = require('jwt-simple')
     , bcrypt   = require('bcryptjs')
     , moment   = require('moment')
-    , CONFIG   = require('../config/auth');
+    , CONFIG   = require('../config/auth')
+    , Avatar = require('../models/avatarModel');
+
 
 let User,
     Schema = mongoose.Schema;
@@ -18,7 +20,8 @@ let userSchema = Schema({
   isAdmin: {type:Boolean, default:false},
   phone: {type:String, default:' '},
   address: {type: String, default:' '},
-  about:{type: String, default:' '}
+  about:{type: String, default:' '},
+  avatar:{type:Schema.Types.ObjectId, ref: Avatar}
 });
 
 userSchema.methods.token = function() {
