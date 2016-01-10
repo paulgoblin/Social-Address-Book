@@ -38,7 +38,6 @@ function UserSvc($http){
   }
 
   this.uploadAvatar = function(updateData, cb){
-    console.log("sendin keys ", updateData);
     $http.post('/API/users/avatar', updateData)
     .then(function(resp){
       cb(null, resp);
