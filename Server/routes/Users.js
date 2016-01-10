@@ -11,34 +11,35 @@ router.get('/', function (req, res){
     users = users.map(user => {
       user.password = null;
       return user;
-    })
+    });
     res.status(err ? 400 : 200).send(err || users);
-  })
-})
+  }).populate('avatar');
+});
 
 router.get('/me', function(req, res){
-  User.findById(req.userId, function(err, user){
+  User.findById(req.userId,  function(err, user){
+    console.log("getting me", user);
     user.password = null;
     res.status(err ? 400 : 200).send(err || user);
-  })
-})
+  }).populate('avatar');
+});
 
 router.post('/favorites', function (req, res){
   User.findById(req.userId, function (err, user){
     user.toggleFavorite(req.body.favId, function(err){
       user.password = null;
       res.status(err ? 400 : 200).send(err || user);
-    })
-  });
-})
+    });
+  }).populate('avatar');
+});
 
 router.post('/admin', function (req, res){
   if (!req.isAdmin) return res.status(403).send('You are not authorized to do this action');
   User.findByIdAndUpdate(req.body.id, {isAdmin: true}, function (err, newAdmin){
     newAdmin.password = null;
     res.status(err ? 400 : 200).send(err || newAdmin);
-  })
-})
+  }).populate('avatar');
+});
 
 router.put('/', function (req, res){
   console.log(req.userId ===req.body._id)
@@ -46,21 +47,21 @@ router.put('/', function (req, res){
     User.findByIdAndUpdate(req.userId, req.body, function (err, updatedUser){
       updatedUser.password = null;
       res.status(err ? 400 : 200).send(err || updatedUser);
-    })
+    }).populate('avatar');
   }else{
     res.status(403).send('You are not authorized to do this action');
   }
-})
+});
 
 router.delete('/', function (req, res){
   if (req.userId === req.body._id || req.isAdmin){
     User.findByIdAndRemove(req.body._id, function (err, removedUser){
       res.status(err ? 400 : 200).send(err || 'removed');
-    })
+    });
   }else{
     res.status(403).send('You are not authorized to do this action');
   }
-})
+});
 
 router.post('/avatar', function(req, res){
   console.log("id confirmation", req.userId, Object.keys(req.body.img));
@@ -72,10 +73,11 @@ router.post('/avatar', function(req, res){
         user.avatar = newAvatar._id;
         user.save(function(err){
           user.avatar = newAvatar;
+          user.password = null;
           res.status(err ? 400 : 200).send(err || user);
-        })
+        });
       })
-    })
+    });
   }else{
     res.status(403).send('You are not authorized to do this action');
   }

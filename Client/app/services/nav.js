@@ -9,7 +9,7 @@ function NavSvc($http){
   this.home = function(cb){
     $http.get('/API/users/me')
       .then(function(resp){
-        console.log(resp)
+        console.log(resp.data);
         cb(null, resp)
       }, function(err){
         console.log(err)

@@ -57,8 +57,8 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
   }
 
   $scope.uploadAvatar = function(){
-    console.log("image stuff", StoreSvc.returnData('me')._id);
-    UserSvc.uploadAvatar({ _id: StoreSvc.returnData('me')._id, img: $scope.images.upload }, editResHandler)
+    var avatarData = { _id: StoreSvc.returnData('me')._id, img: $scope.images.upload };
+    UserSvc.uploadAvatar(avatarData, editResHandler)
   }
 
   $scope.toggleModal = function(){
@@ -95,8 +95,7 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
       console.log(err);
       updateView();
     }else{
-      console.log(resp);
-      // StoreSvc.saveData('me', resp.data);
+      StoreSvc.saveData('me', resp.data);
     }
   }
 }
