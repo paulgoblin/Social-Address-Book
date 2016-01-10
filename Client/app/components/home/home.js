@@ -59,6 +59,7 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
 
   $scope.uploadAvatar = function(){
+    console.log("image stuff");
     UserSvc.uploadAvatar({ _id: $scope.user._id, img: $scope.images.upload }, editResHandler)
   }
 
@@ -67,6 +68,7 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
   }
 
   $scope.save = function(){
+    console.log("image stuff");
     user.profilename = $scope.user['Profile Name'];
     user.email = $scope.user.Email;
     user.phone = $scope.user['Phone Number'];
