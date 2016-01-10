@@ -45,12 +45,6 @@ router.put('/', function (req, res){
   }else{
     res.status(403).send('You are not authorized to do this action');
   }
-  // else if (req.isAdmin){
-  //   console.log('admin')
-  //   User.findByIdAndUpdate(req.body.id, req.body, function (err, updatedUser){
-  //     res.status(err ? 400 : 200).send(err || updatedUser);
-  //   })
-  // }else{
 })
 
 router.delete('/', function (req, res){

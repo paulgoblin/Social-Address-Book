@@ -15,7 +15,7 @@ function UserSvc($http){
       cb(err)
     });
   }
-  this.edit = function(favId, cb){
+  this.toggleFav = function(favId, cb){
     $http.post('/API/users/favorites', {favId: favId})
     .then(function(resp){
       cb(null,resp)
