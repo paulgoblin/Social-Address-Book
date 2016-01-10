@@ -145,10 +145,12 @@ img#wallpaper {
   font-weight: 600;
 }
 
-#edit {
+#edit, #delete {
   font-style: italic;
   font-size: .8em;
   cursor: pointer;
+  padding: 10px;
+  text-align: right;
 }
 
 textarea#bio {
@@ -267,7 +269,7 @@ body {
 }
 
 .editBtns {
-  text-align: right;
+  text-align: left;
   padding: 10px 0 10px 0;
 }
 

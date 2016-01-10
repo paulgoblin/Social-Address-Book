@@ -2,52 +2,39 @@
   <div class="row user_profile_page">
     <div class="content columns small-12">
       <div class="row">
-        <div class="cropAvatar small-12 medium-6 large-4 columns">
-          <img class="avatar" src="https://i.ytimg.com/vi/UKp2CrfmVfw/maxresdefault.jpg" alt="Alessia Cara" >
-        </div>
+
         <div class="columns small-12 medium-6 large-8">
           <div class="row userInfo">
-            <div class="columns small-12">
+            <div class="columns small-12" ng-repeat="(key, value) in user">
               <div class="row">
-                <p class="profileKey columns small-12 medium-2 large-2">Username</p>
-                <p class="columns small-12 medium-8 large-9">{{user.username}} Lorem ipsum.</p>
-                <div class="columns large-1" id="edit" ng-click='toggleModal()'>Edit</div>
-              </div>
-            </div>
-            <div class="columns small-12">
-              <div class="row">
-                <p class="profileKey columns small-12 medium-4 large-2">Email</p>
-                <p class="columns small-12 medium-8 large-10">{{user.email}} Lorem ipsum dolor sit amet.</p>
-              </div>
-            </div>
-            <div class="columns small-12">
-              <div class="row">
-                <p class="profileKey columns small-12 medium-4 large-2">Phone</p>
-                <p class="columns small-12 medium-8 large-10">{{user.phone}} Lorem ipsum dolor.</p>
-              </div>
-            </div>
-            <div class="columns small-12">
-              <div class="row">
-                <p class="profileKey columns small-12 medium-4 large-2">Address</p>
-                <p class="columns small-12 medium-8 large-10">{{user.adress}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, voluptatem!</p>
-              </div>
-            </div>
-            <div class="columns small-12">
-              <div class="row">
-                <p class="profileKey columns small-12 medium-4 large-2">About</p>
-                <p class="columns small-12 medium-8 large-10">{{user.about}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta debitis, voluptatibus soluta exercitationem nisi quod reiciendis magni in aperiam quaerat, mollitia sint aspernatur deserunt. Commodi modi maxime, sit dicta aut dolore ipsam blanditiis distinctio alias sed, consectetur architecto odit. Ut quae fuga iusto cumque modi, iste voluptas sed qui deserunt, numquam quis dolores libero. Aut fuga deserunt minus soluta nemo.</p>
+                <p class="profileKey columns small-12 medium-3 large-3">{{key}}</p>
+                <p class="columns small-12 medium-9 large-9">{{value}}</p>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="cropAvatar small-12 medium-6 large-4 columns">
+          <img class="avatar" src="https://i.ytimg.com/vi/UKp2CrfmVfw/maxresdefault.jpg" alt="Alessia Cara" >
+          <div class="fileUpload">
+            <label for="avatarFileToUpload"></label>
+            <input type="file" name="avatarFileToUpload" id="avatarFileToUpload">
+          </div>
+        </div>
+
+        <div class="columns small-3 end">
+          <span id="edit" ng-click='toggleModal()'>Edit   </span>
+          <span id="delete" ng-click='delete()'>Delete</span>
+        </div>
+
       </div>
     </div>
     <modal show='modalShown'>
-      <label>Profile Name:<input type="text" placeholder="Paul Richter"></label>
-      <label>Email:<input type="email" placeholder="hireme@gmail.com"></label>
-      <label>Phone Number:<input type="text" placeholder="(123) 456-7890"></label>
-      <label>Address: <input type="text" placeholder="123 Hollywood Blvd, Hollywood, CA 90028"></label>
-      <button ng-click="save">Save</button>
+      <div ng-repeat="(key, value) in user">
+        <label>{{key}}</label>
+        <input type="text" ng-model="user[key]">
+      </div>
+      <button ng-click="save()">Save</button>
     </modal>
   </div>
 </div>
