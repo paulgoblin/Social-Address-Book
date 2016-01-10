@@ -127,9 +127,6 @@ img#wallpaper {
   width: 100%;
 }
 
-.content * {
-  /*border: 1px solid red;*/
-}
 
 .user_profile_page .content {
   color: #E5E5E7;
@@ -296,6 +293,11 @@ body {
 }
 
 /* fullBar styling */
+
+.content * {
+  /*border: 1px solid red;*/
+}
+
 .fullBar {
   display: none;
 }

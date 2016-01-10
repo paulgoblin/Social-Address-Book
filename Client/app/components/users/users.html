@@ -15,7 +15,7 @@
 
       <div class="miniBar small-12 columns">
         <img class="thumbAvatar columns small-1" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
-        <span class="userName columns small-1" >{{user.username}}</span>
+        <span class="userName columns small-1">{{user.username}}</span>
         <span class="about columns small-8" >{{user.about}}</span>
         <span class="editBtns columns small-1">
           <div ng-if="user.isAdmin">
@@ -27,16 +27,53 @@
           </span>
         </span>
       </div>
-
       <div class="fullBar" >
-        <div class="avatarContainer">
-          <img class="fullAvatar" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
-        </div>
+
         <div class="fullInfo">
-          <!-- Should mirror what is in home. Make it look good! -->
+          <div class="content columns small-12">
+            <div class="row userInfo">
+              <div class="columns small-12" >
+                <div class="row">
+                  <p class="profileKey columns small-12 medium-3 large-3">Profile Name</p>
+                  <p class="columns small-12 medium-9 large-9">{{user.profilename}}</p>
+                </div>
+              </div>
+              <div class="columns small-12" >
+                <div class="row">
+                  <p class="profileKey columns small-12 medium-3 large-3">Email</p>
+                  <p class="columns small-12 medium-9 large-9">{{user.email}}</p>
+                </div>
+              </div>
+              <div class="columns small-12" >
+                <div class="row">
+                  <p class="profileKey columns small-12 medium-3 large-3">Phone</p>
+                  <p class="columns small-12 medium-9 large-9">{{user.phone}}</p>
+                </div>
+              </div>
+              <div class="columns small-12" >
+                <div class="row">
+                  <p class="profileKey columns small-12 medium-3 large-3">Address</p>
+                  <p class="columns small-12 medium-9 large-9">{{user.adress}}</p>
+                </div>
+              </div>
+              <div class="columns small-12" >
+                <div class="row">
+                <p class="profileKey columns small-12 medium-3 large-3">Bio</p>
+                  <p class="columns small-12 medium-9 large-9">{{user.about}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cropAvatar small-12 medium-6 large-4 columns">
+            <img class="avatar" src="https://i.ytimg.com/vi/UKp2CrfmVfw/maxresdefault.jpg" alt="Alessia Cara" >
+          </div>
+
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 </div>
 </div>

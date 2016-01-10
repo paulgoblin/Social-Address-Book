@@ -8,6 +8,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   $scope.users = StoreSvc.returnData("users");
   $scope.me = StoreSvc.returnData("me");
   $scope.showFavs = false;
+  console.log($scope.users)
 
   $scope.isFav = (_id) => {
     return $scope.me.favorites.some(faved_id => {
@@ -20,7 +21,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   }
 
   $scope.editInfo = (_id) => {
-    console.log('youre editing my info!')
+    console.log('you\'re editing my info!')
   }
 
   $scope.deleteUser = (_id) => {
