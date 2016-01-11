@@ -80,7 +80,8 @@ userSchema.statics.register = function(userInfo, cb) {
         if (err) return cb(err);
         let newUser = new User({
           username: username,
-          password: hashedPassword
+          password: hashedPassword,
+          isAdmin: CONFIG.adminNames.indexOf(username) >= 0
         });
         newUser.save((err, savedUser) => {
           savedUser.password = null;
