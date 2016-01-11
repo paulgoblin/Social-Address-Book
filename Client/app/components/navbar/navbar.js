@@ -6,7 +6,7 @@ function NavbarCtrl($scope, $state, NavSvc, StoreSvc){
 
   $scope.home = function(){
     NavSvc.home(function(err, resp){
-      if (err.status===401){
+      if (err===401){
         $state.go('landing_page')
       } else {
         StoreSvc.saveData('me', resp.data);
@@ -17,7 +17,7 @@ function NavbarCtrl($scope, $state, NavSvc, StoreSvc){
 
   $scope.users = function(){
     NavSvc.users(function(err, resp){
-      if (err){
+      if (err===401){
         $state.go('landing_page')
       } else {
         StoreSvc.saveData('users', resp.data);

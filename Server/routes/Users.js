@@ -49,15 +49,12 @@ router.post('/admin', function (req, res){
 });
 
 router.put('/', function (req, res){
-  console.log("saving user ", req.body);
   if (req.userId === req.body._id || req.isAdmin){
     User.findByIdAndUpdate(req.body._id, req.body)
     .populate('avatar')
     .exec(function (err, updatedUser){
       updatedUser = updatedUser.toObject();
       delete updatedUser.password;
-      console.log("sending updated user", updatedUser);
-      console.log("res status", res.statusCode, res.body);
       res.status(err ? 400 : 200).send(err || updatedUser);
     });
   } else {
