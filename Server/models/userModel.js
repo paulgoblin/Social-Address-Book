@@ -35,19 +35,20 @@ userSchema.methods.token = function() {
 
 userSchema.statics.login = function(userInfo, cb) {
   // look for user in database
-  User.findOne({username: userInfo.username}, (err, foundUser) => {
+  User.findOne({username: userInfo.username}).populate('avatar')
+  .exec((err, foundUser) => {
     if (err) return cb('server error');
     if (!foundUser) return cb('incorrect username or password');
     bcrypt.compare(userInfo.password, foundUser.password, (err, isGood) => {
+      if (err) console.log("bcrypt error");
       if (err) return cb('server err');
       if (isGood) {
-        foundUser.password = null;
         return cb(null, foundUser);
       } else {
         return cb('incorrect username or password');
       }
     });
-  }).populate('avatar');
+  });
 }
 
 userSchema.statics.register = function(userInfo, cb) {
@@ -83,8 +84,8 @@ userSchema.statics.register = function(userInfo, cb) {
           password: hashedPassword,
           isAdmin: CONFIG.adminNames.indexOf(username) >= 0
         });
+        console.log("saving admin user", newUser);
         newUser.save((err, savedUser) => {
-          savedUser.password = null;
           return cb(err, savedUser);
         })
       });

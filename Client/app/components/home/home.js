@@ -54,7 +54,6 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
       Bio: user.about
     };
 
-    console.log("updating View");
     $scope.user = User;
     $scope.avatarSrc = UserSvc.getAvatarSrc(user);
     console.log("avatar src", $scope.avatarSrc);
@@ -70,12 +69,14 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
   }
 
   $scope.save = function(){
+    // var user = {};
     user.profilename = $scope.user['Profile Name'];
     user.email = $scope.user.Email;
     user.phone = $scope.user['Phone Number'];
     user.address = $scope.user.Address;
     user.about = $scope.user.Bio;
-
+    delete user.avatar;
+    console.log(user);
     UserSvc.edit( user, editResHandler );
 
     $scope.modalShown = !$scope.modalShown;
@@ -98,6 +99,7 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
       console.log(err);
       updateView();
     }else{
+      console.log("home edit response", resp.data);
       StoreSvc.saveData('me', resp.data);
       updateView();
     }

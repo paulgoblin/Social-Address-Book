@@ -7,9 +7,11 @@ const Avatar = require('../models/avatarModel');
 let router = express.Router();
 
 router.get('/', function (req, res){
-  User.find({}, function (err, users){
+  User.find({}).populate('avatar')
+  .exec(function (err, users){
     users = users.map(user => {
-      user.password = null;
+      user = user.toObject();
+      delete user.password;
       return user;
     });
     res.status(err ? 400 : 200).send(err || users);
@@ -17,39 +19,48 @@ router.get('/', function (req, res){
 });
 
 router.get('/me', function(req, res){
-  User.findById(req.userId,  function(err, user){
-    console.log("getting me", user);
-    user.password = null;
-    console.log("getting me", user.avatar);
+  User.findById(req.userId).populate('avatar')
+  .exec(function(err, user){
+    user = user.toObject();
+    delete user.password;
     res.status(err ? 400 : 200).send(err || user);
   }).populate('avatar');
 });
 
 router.post('/favorites', function (req, res){
-  User.findById(req.userId, function (err, user){
+  User.findById(req.userId).populate('avatar')
+  .exec(function (err, user){
     user.toggleFavorite(req.body.favId, function(err){
-      user.password = null;
+      user = user.toObject();
+      delete user.password;
       res.status(err ? 400 : 200).send(err || user);
     });
-  }).populate('avatar');
+  });
 });
 
 router.post('/admin', function (req, res){
   if (!req.isAdmin) return res.status(403).send('You are not authorized to do this action');
-  User.findByIdAndUpdate(req.body.id, {isAdmin: true}, function (err, newAdmin){
-    newAdmin.password = null;
+  User.findByIdAndUpdate(req.body.id, {isAdmin: true}).populate('avatar')
+  .exec(function (err, newAdmin){
+    newAdmin = newAdmin.toObject();
+    delete newAdmin.password;
     res.status(err ? 400 : 200).send(err || newAdmin);
-  }).populate('avatar');
+  });
 });
 
 router.put('/', function (req, res){
-  console.log(req.userId ===req.body._id)
+  console.log("saving user ", req.body);
   if (req.userId === req.body._id || req.isAdmin){
-    User.findByIdAndUpdate(req.userId, req.body, function (err, updatedUser){
-      updatedUser.password = null;
+    User.findByIdAndUpdate(req.body._id, req.body)
+    .populate('avatar')
+    .exec(function (err, updatedUser){
+      updatedUser = updatedUser.toObject();
+      delete updatedUser.password;
+      console.log("sending updated user", updatedUser);
+      console.log("res status", res.statusCode, res.body);
       res.status(err ? 400 : 200).send(err || updatedUser);
-    }).populate('avatar');
-  }else{
+    });
+  } else {
     res.status(403).send('You are not authorized to do this action');
   }
 });
@@ -74,7 +85,8 @@ router.post('/avatar', function(req, res){
         user.avatar = newAvatar._id;
         user.save(function(err){
           user.avatar = newAvatar;
-          user.password = null;
+          user = user.toObject();
+          delete user.password;
           res.status(err ? 400 : 200).send(err || user);
         });
       })

@@ -5,6 +5,7 @@ angular
 
 function UserSvc($http){
   this.edit = function(data, cb){
+    console.log("updating user", data);
     $http({
       method: 'PUT',
       url: '/API/users',
@@ -15,6 +16,7 @@ function UserSvc($http){
       cb(err)
     });
   }
+
   this.toggleFav = function(favId, cb){
     $http.post('/API/users/favorites', {favId: favId})
     .then(function(resp){
@@ -24,7 +26,8 @@ function UserSvc($http){
     });
   }
 
-  this.delete = function(data, cb){
+  this.delete = function(user, cb){
+    var data = {_id: user._id};
     $http({
       method: 'DELETE',
       url: '/API/users',
