@@ -5,11 +5,13 @@
         <div class="small-3 columns">
           <input type="text" placeholder="search" ng-model="filterQuery" >
         </div>
-        <div class="small-3 columns">
-          <div class="viewFavorites button small-push-1 columns" ng-click="toggleFavs()">Favorites</div>
+        <div class="small-3 columns users">
+          <div class="viewFavorites button small-push-1 columns" ng-click="toggleFavs()" >
+            <span class='fa fa-star-o'></span>Favorites
+          </div>
         </div>
       </div>
-      <div class="content row" ng-repeat="user in users | filter:filterQuery" ng-click="toggleActive(user._id)"
+      <div class="content row" ng-repeat="user in users | filter:filterQuery" ng-click="toggleActive(user._id, $event)"
       ng-class="{ 'cardIsActive' : activeCards[user._id] }", ng-if='(user._id !== me._id) && (showFavs ?  isFav(user._id) : true)'>
 
       <div class="miniBar small-12 columns">
@@ -17,13 +19,15 @@
         <span class="userName columns small-1">{{user.username}}</span>
         <span class="about columns small-8" >{{user.about}}</span>
         <span class="editBtns columns small-1">
-          <div ng-if="me.isAdmin">
-            <span class="edit" ng-click="editInfo(user._id); $event.stopPropagation();"><i class="fa fa-edit"></i></span>
-            <span class="trash" ng-click="deleteUser(user._id); $event.stopPropagation();"><i class="fa fa-trash"></i></span>
+          <div class="function_buttons_users">
+            <div ng-if="me.isAdmin">
+            <span class="edit" ng-click="toggleModal($event)"><i class="fa fa-edit"></i></span>
+            <span class="trash" ng-click="deleteUser(user); $event.stopPropagation();"><i class="fa fa-trash"></i></span>
           </div>
           <span class="favStar">
             <i class="fa" ng-class=" isFav(user._id) ? 'fa-star' : 'fa-star-o' " ng-click="makeFav(user._id); $event.stopPropagation();"></i>
           </span>
+          </div>
         </span>
       </div>
       <div class="fullBar" >
@@ -61,8 +65,13 @@
         </div>
       </div>
     </div>
+        <modal show='modalShown'>
+    <div ng-repeat="(key, value) in user">
+      <label>{{key}}</label>
+      <input type="text" ng-model="user[key]">
+    </div>
+    <button ng-click="save()">Save</button>
+  </modal>
   </div>
 </div>
-</div>
-</div>
-</div>
+

@@ -17,6 +17,10 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res) => {
   User.login(req.body, (err, user) => {
+    if(err){
+      res.status(400).send(err);
+      return;
+    }
     var token = user.token();
     user = user.toObject();
     delete user.password;

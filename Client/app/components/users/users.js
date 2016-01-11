@@ -4,6 +4,8 @@ angular
   .controller('UsersCtrl', ['$scope', 'UserSvc', 'StoreSvc', UsersCtrl]);
 
 function UsersCtrl($scope, UserSvc, StoreSvc){
+  $scope.modalShown = false;
+
   $scope.activeCards = {};
   $scope.me = StoreSvc.returnData("me") || {favorites: []};
   $scope.showFavs = false;
@@ -12,7 +14,6 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
     user.avatar = UserSvc.getAvatarSrc(user);
     return user;
   })
-  console.log($scope.users);
 
   $scope.isFav = (_id) => {
     return $scope.me.favorites.some(faved_id => {
@@ -24,15 +25,37 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
     UserSvc.toggleFav(_id , favRespHandler);
   }
 
-  $scope.editInfo = (_id) => {
-    console.log('you\'re editing my info!')
+  $scope.toggleModal = function($event){
+    $event.stopPropagation();
+    $scope.modalShown = !$scope.modalShown;
+    console.log('togglemodal shown')
   }
 
-  $scope.deleteUser = (_id) => {
-    console.log(_id);
+  $scope.save = function(){
+    // var user = {};
+    user.profilename = $scope.user['Profile Name'];
+    user.email = $scope.user.Email;
+    user.phone = $scope.user['Phone Number'];
+    user.address = $scope.user.Address;
+    user.about = $scope.user.Bio;
+    delete user.avatar;
+    console.log(user);
+    UserSvc.edit( user, editResHandler );
+
+    $scope.modalShown = !$scope.modalShown;
   }
 
-  $scope.toggleActive = function(_id) {
+  $scope.deleteUser = (user) => {
+    if(window.confirm("Do you really want to delete this user?")){
+      UserSvc.delete(user, function(err, resp){
+        if(err){console.log(err)}
+        console.log(resp)
+      })
+    }
+  }
+
+  $scope.toggleActive = function(_id, $event) {
+    $event.stopPropagation();
     $scope.activeCards[_id] = !$scope.activeCards[_id];
   }
 
