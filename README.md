@@ -1,13 +1,15 @@
 # User Creepin'  
 Creep on other users, favorite the ones you wanna stalk!
+https://limitless-waters-9904.herokuapp.com
 
-*Created by: [Virsaviya Efraim](https://twitter.com/VirsaviyaEfraim), Ray Kim, [Paul Richter](https://twitter.com/paulgoblin), Ed Song, [Missy Bur](https://twitter.com/Missybur)*  
+*Created by: [Virsaviya Efraim](https://twitter.com/VirsaviyaEfraim), Ray Kim, [Paul Richter](https://twitter.com/paulgoblin), Ed Song*
 *Created on: January 6, 2016*  
 *Upadted on: January 10, 2016*
 
 ### The App
 
 ### The Assignment
+
 
 Focus on your collaboration skills, ability to plan out and create an entire MEAN stack application, and applying all the knowledge you have already accumulated. NO jQuery - harness the power of Angular!
 
