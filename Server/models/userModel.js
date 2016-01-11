@@ -1,10 +1,12 @@
-  'use strict';
+'use strict';
 
 const mongoose = require('mongoose')
     , jwt      = require('jwt-simple')
     , bcrypt   = require('bcryptjs')
     , moment   = require('moment')
-    , CONFIG   = require('../config/auth');
+    , CONFIG   = require('../config/auth')
+    , Avatar = require('../models/avatarModel');
+
 
 let User,
     Schema = mongoose.Schema;
@@ -13,12 +15,13 @@ let userSchema = Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   email: {type:String, default: ' '},
-  favorites: [{type:Schema.Types.ObjectId, ref: User}],
+  favorites: [{type:Schema.Types.ObjectId, ref: 'User'}],
   profilename: {type: String, default:' '},
   isAdmin: {type:Boolean, default:false},
   phone: {type:String, default:' '},
   address: {type: String, default:' '},
-  about:{type: String, default:' '}
+  about:{type: String, default:' '},
+  avatar:{type: Schema.Types.ObjectId, ref: 'Avatar'}
 });
 
 userSchema.methods.token = function() {
@@ -44,7 +47,7 @@ userSchema.statics.login = function(userInfo, cb) {
         return cb('incorrect username or password');
       }
     });
-  });
+  }).populate('avatar');
 }
 
 userSchema.statics.register = function(userInfo, cb) {
@@ -85,7 +88,7 @@ userSchema.statics.register = function(userInfo, cb) {
         })
       });
     });
-  });
+  }).populate('avatar');
 };
 
 userSchema.methods.toggleFavorite = function(togId, cb){

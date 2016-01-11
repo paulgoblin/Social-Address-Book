@@ -1,6 +1,6 @@
 angular
   .module('userApp')
-  .controller('HomeCtrl', ['$scope', 'UserSvc', 'StoreSvc', 'NavSvc', '$state', HomeCtrl])
+  .controller('HomeCtrl', ['$scope', '$state', 'UserSvc', 'StoreSvc', 'NavSvc', HomeCtrl])
   .directive('modal', function() {
   return {
     restrict: 'E',
@@ -24,9 +24,10 @@ angular
   };
 });
 
-function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
+function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
   var user;
+  $scope.modalShown = false;
 
   if (StoreSvc.returnData('me')){
     updateView();
@@ -36,13 +37,23 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
         $state.go('landing_page');
         return;
       }
+      console.log("user from navSvc",resp.data);
       StoreSvc.saveData('me', resp.data);
       updateView();
     })
   }
 
-  function updateView (){
-    user = StoreSvc.returnData('me')
+  function getAvatarSrc(user) {
+    // console.log('inside avatarSrc', user);
+    var defaultUrl = "http://www.bathspa.ac.uk/media/WebProfilePictures/default_profile.jpg";
+    var userAvatar = user.avatar ? UserSvc.avatarImgSrc(user) : null;
+    console.log("one of these: ", userAvatar, defaultUrl);
+    return userAvatar || defaultUrl;
+  }
+
+  function updateView() {
+    user = StoreSvc.returnData('me');
+    console.log("avatar", user.avatar);
     var User = {
       'Profile Name': user.profilename,
       Email: user.email,
@@ -51,12 +62,16 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
       Bio: user.about
     };
 
+    console.log("updating View");
     $scope.user = User;
+    $scope.avatarSrc = getAvatarSrc(user);
+    console.log("avatar src", $scope.avatarSrc);
   }
 
-  // var user = updateView();
-
-  $scope.modalShown = false;
+  $scope.uploadAvatar = function(){
+    var avatarData = { _id: StoreSvc.returnData('me')._id, img: $scope.images.upload };
+    UserSvc.uploadAvatar(avatarData, editResHandler)
+  }
 
   $scope.toggleModal = function(){
     $scope.modalShown = !$scope.modalShown;
@@ -69,15 +84,8 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
     user.address = $scope.user.Address;
     user.about = $scope.user.Bio;
 
-    UserSvc.edit(user, function (err, resp){
-      if (err){
-        console.log(err);
-        updateView();
-      }else{
-        StoreSvc.saveData('me', resp.data);
-      }
+    UserSvc.edit( user, editResHandler );
 
-    });
     $scope.modalShown = !$scope.modalShown;
   }
 
@@ -91,5 +99,15 @@ function HomeCtrl($scope, UserSvc, StoreSvc, NavSvc, $state){
         });
       }
     });
+  }
+
+  function editResHandler(err, resp){
+    if (err){
+      console.log(err);
+      updateView();
+    }else{
+      StoreSvc.saveData('me', resp.data);
+      updateView();
+    }
   }
 }
