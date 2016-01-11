@@ -15,7 +15,7 @@ router.get('/', function (req, res){
       return user;
     });
     res.status(err ? 400 : 200).send(err || users);
-  }).populate('avatar');
+  });
 });
 
 router.get('/me', function(req, res){
@@ -24,7 +24,7 @@ router.get('/me', function(req, res){
     user = user.toObject();
     delete user.password;
     res.status(err ? 400 : 200).send(err || user);
-  }).populate('avatar');
+  });
 });
 
 router.post('/favorites', function (req, res){
