@@ -8,7 +8,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   $scope.users = StoreSvc.returnData("users");
   $scope.me = StoreSvc.returnData("me");
   $scope.showFavs = false;
-  console.log($scope.users)
+  console.log($scope.me);
 
   $scope.isFav = (_id) => {
     return $scope.me.favorites.some(faved_id => {

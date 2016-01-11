@@ -12,14 +12,10 @@
       <button id="log_in_button" class="button r_l_buttons" ng-click="landing_page.showLogin()" ng-hide='landing_page.formToShow'>Log In</button>
     </div>
     <div ng-show="landing_page.formToShow">
-<!--       <label class="error">
-        <input type="text" placeholder="Email">
-        <small class="error">Invalid Email</small>
-      </label> -->
       <div class="row">
         <div class="r_l_inputs columns small-12 medium-6 medium-pull-3 large-4 large-push-4">
           <input id="usernameInput" type="text" placeholder="Username" ng-model="input.username">
-          <input type="email" placeholder="Email" ng-model="input.email" ng-hide="landing_page.formToShow === 'login'">
+          <!-- <input type="email" placeholder="Email" ng-model="input.email" ng-hide="landing_page.formToShow === 'login'"> -->
           <input type="password" placeholder="Password" ng-model="input.password">
           <input type="password" placeholder="Confirm Password" ng-model="input.password2" ng-hide="landing_page.formToShow === 'login'">
         </div>
