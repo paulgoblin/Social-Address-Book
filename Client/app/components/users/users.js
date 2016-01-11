@@ -5,7 +5,7 @@ angular
 
 function UsersCtrl($scope, UserSvc, StoreSvc){
   $scope.activeCards = {};
-  $scope.me = StoreSvc.returnData("me");
+  $scope.me = StoreSvc.returnData("me") || {favorites: []};
   $scope.showFavs = false;
 
   $scope.users = StoreSvc.returnData("users").map(user => {
@@ -29,7 +29,7 @@ function UsersCtrl($scope, UserSvc, StoreSvc){
   }
 
   $scope.deleteUser = (_id) => {
-    alert("ARE YOU FREAKIN SURE?")
+    console.log(_id);
   }
 
   $scope.toggleActive = function(_id) {

@@ -7,15 +7,21 @@ let router = express.Router();
 
 router.post('/register', (req, res) => {
   User.register(req.body, (err, user) => {
+    var token = user.token();
+    user = user.toObject();
+    delete user.password;
     res.status(err ? 400 : 200)
-    .send(err || {token: user.token(), "user":user});
+    .send(err || {token: token, "user":user});
   });
 });
 
 router.post('/login', (req, res) => {
   User.login(req.body, (err, user) => {
+    var token = user.token();
+    user = user.toObject();
+    delete user.password;
     res.status(err ? 400 : 200)
-    .send(err || {"user": user, token: user.token()});
+    .send(err || {token: token, "user":user});
   });
 });
 
