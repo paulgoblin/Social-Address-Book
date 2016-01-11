@@ -46,7 +46,13 @@ function UserSvc($http){
     })
   }
 
-  this.avatarImgSrc = function(user){
+  this.getAvatarSrc = function(user){
+    var defaultUrl = "http://www.bathspa.ac.uk/media/WebProfilePictures/default_profile.jpg";
+    var userAvatar = user.avatar ? avatarImgSrc(user) : null;
+    return userAvatar || defaultUrl;
+  }
+
+  function avatarImgSrc(user){
     var data = user.avatar.img.data;
     var type = user.avatar.img.contentType;
     return `data:${type};base64,${data}`

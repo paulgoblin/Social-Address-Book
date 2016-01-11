@@ -9,12 +9,11 @@
           <div class="viewFavorites button small-push-1 columns" ng-click="toggleFavs()">Favorites</div>
         </div>
       </div>
-      {{searchText}}
       <div class="content row" ng-repeat="user in users | filter:filterQuery" ng-click="toggleActive(user._id)"
       ng-class="{ 'cardIsActive' : activeCards[user._id] }", ng-if='(user._id !== me._id) && (showFavs ?  isFav(user._id) : true)'>
 
       <div class="miniBar small-12 columns">
-        <img class="thumbAvatar columns small-1" src="http://i1.wp.com/www.rowsdowr.com/wp-content/uploads/2014/02/chad-smith-vs-will-ferrell.jpg" alt="">
+        <img class="thumbAvatar columns small-1" src="{{user.avatar}}" alt="">
         <span class="userName columns small-1">{{user.username}}</span>
         <span class="about columns small-8" >{{user.about}}</span>
         <span class="editBtns columns small-1">
@@ -33,7 +32,7 @@
           <div class="content columns small-12 medium-6 large-7">
             <div class="row userInfo">
               <div class="row">
-                <p class="profileKey columns small-12 medium-3 large-3">Profile Name</p>
+                <p class="profileKey columns small-12 medium-3 large-3">Name</p>
                 <p class="columns small-12 medium-9 large-9">{{user.profilename}}</p>
               </div>
               <div class="row">
@@ -56,7 +55,7 @@
           </div>
 
           <div class="cropAvatar small-12 medium-6 large-4 columns">
-            <img class="avatar" src="https://i.ytimg.com/vi/UKp2CrfmVfw/maxresdefault.jpg" alt="Alessia Cara" >
+            <img class="avatar" src="{{user.avatar}}" alt="Alessia Cara" >
           </div>
 
         </div>

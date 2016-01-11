@@ -1,3 +1,4 @@
+'use strict';
 angular
   .module('userApp')
   .controller('HomeCtrl', ['$scope', '$state', 'UserSvc', 'StoreSvc', 'NavSvc', HomeCtrl])
@@ -43,17 +44,8 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
     })
   }
 
-  function getAvatarSrc(user) {
-    // console.log('inside avatarSrc', user);
-    var defaultUrl = "http://www.bathspa.ac.uk/media/WebProfilePictures/default_profile.jpg";
-    var userAvatar = user.avatar ? UserSvc.avatarImgSrc(user) : null;
-    console.log("one of these: ", userAvatar, defaultUrl);
-    return userAvatar || defaultUrl;
-  }
-
   function updateView() {
     user = StoreSvc.returnData('me');
-    console.log("avatar", user.avatar);
     var User = {
       'Profile Name': user.profilename,
       Email: user.email,
@@ -64,7 +56,7 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
     console.log("updating View");
     $scope.user = User;
-    $scope.avatarSrc = getAvatarSrc(user);
+    $scope.avatarSrc = UserSvc.getAvatarSrc(user);
     console.log("avatar src", $scope.avatarSrc);
   }
 
