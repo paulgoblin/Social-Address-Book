@@ -5,6 +5,7 @@ angular
 
 function UserSvc($http){
   this.edit = function(data, cb){
+    delete data.avatar;
     console.log("updating user", data);
     $http({
       method: 'PUT',

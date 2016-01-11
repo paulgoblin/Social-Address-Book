@@ -5,10 +5,34 @@
 
         <div class="columns small-12 medium-6 large-8">
           <div class="row userInfo">
-            <div class="columns small-12" ng-repeat="(key, value) in user">
+            <div class="columns small-12">
               <div class="row">
-                <p class="profileKey columns small-12 medium-3 large-3">{{key}} :</p>
-                <p class="columns small-12 medium-9 large-9">{{value}}</p>
+                <p class="profileKey columns small-12 medium-3 large-3">Name :</p>
+                <p class="columns small-12 medium-9 large-9">{{user.profilename}}</p>
+              </div>
+            </div>
+            <div class="columns small-12">
+              <div class="row">
+                <p class="profileKey columns small-12 medium-3 large-3">Email :</p>
+                <p class="columns small-12 medium-9 large-9">{{user.email}}</p>
+              </div>
+            </div>
+            <div class="columns small-12">
+              <div class="row">
+                <p class="profileKey columns small-12 medium-3 large-3">Phone :</p>
+                <p class="columns small-12 medium-9 large-9">{{user.phone}}</p>
+              </div>
+            </div>
+            <div class="columns small-12">
+              <div class="row">
+                <p class="profileKey columns small-12 medium-3 large-3">Address :</p>
+                <p class="columns small-12 medium-9 large-9">{{user.address}}</p>
+              </div>
+            </div>
+            <div class="columns small-12">
+              <div class="row">
+                <p class="profileKey columns small-12 medium-3 large-3">Bio :</p>
+                <p class="columns small-12 medium-9 large-9">{{user.about}}</p>
               </div>
             </div>
           </div>
@@ -28,9 +52,17 @@
       </div>
     </div>
     <modal show='modalShown'>
-      <div ng-repeat="(key, value) in user">
-        <label>{{key}}</label>
-        <input type="text" ng-model="user[key]">
+      <div >
+        <label>Name</label>
+        <input type="text" ng-model="user.profilename">
+        <label>Email</label>
+        <input type="text" ng-model="user.email">
+        <label>Address</label>
+        <input type="text" ng-model="user.address">
+        <label>Phone</label>
+        <input type="text" ng-model="user.phone">
+        <label>Bio</label>
+        <input type="text" ng-model="user.about">
       </div>
       <button ng-click="save()">Save</button>
     </modal>

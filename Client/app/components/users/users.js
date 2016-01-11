@@ -1,46 +1,60 @@
 'use strict';
 angular
   .module('userApp')
-  .controller('UsersCtrl', ['$scope', 'UserSvc', 'StoreSvc', UsersCtrl]);
+  .controller('UsersCtrl', ['$scope', 'UserSvc', 'StoreSvc', 'NavSvc', UsersCtrl]);
 
-function UsersCtrl($scope, UserSvc, StoreSvc){
+function UsersCtrl($scope, UserSvc, StoreSvc, NavSvc){
   $scope.modalShown = false;
 
   $scope.activeCards = {};
-  $scope.me = StoreSvc.returnData("me") || {favorites: []};
-  $scope.showFavs = false;
 
-  $scope.users = StoreSvc.returnData("users").map(user => {
-    user.avatar = UserSvc.getAvatarSrc(user);
-    return user;
+  NavSvc.users(function (err, resp){
+    if (err===401) {
+        $state.go('landing_page');
+        return;
+    }
+    StoreSvc.saveData('users', resp.data);
+    $scope.users = StoreSvc.returnData("users").map(user => {
+      user.avatar = UserSvc.getAvatarSrc(user);
+      return user;
+    })
   })
 
-  $scope.isFav = (_id) => {
-    return $scope.me.favorites.some(faved_id => {
-      return _id == faved_id;
-    })
-  }
+  NavSvc.home(function (err, resp){
+    if (err===401){
+      $state.go('landing_page');
+      return;
+    }
+    $scope.me = StoreSvc.returnData("me") || {favorites: []};
+    $scope.isFav = (_id) => {
+      return $scope.me.favorites.some(faved_id => {
+        return _id == faved_id;
+      })
+    }
+  })
+
+  $scope.showFavs = false;
+
+  
 
   $scope.makeFav = (_id) => {
     UserSvc.toggleFav(_id , favRespHandler);
   }
 
-  $scope.toggleModal = function($event){
+  $scope.toggleModal = function(idx, $event){
     $event.stopPropagation();
     $scope.modalShown = !$scope.modalShown;
+    $scope.current_user = $scope.users[idx];
     console.log('togglemodal shown')
   }
 
   $scope.save = function(){
     // var user = {};
-    user.profilename = $scope.user['Profile Name'];
-    user.email = $scope.user.Email;
-    user.phone = $scope.user['Phone Number'];
-    user.address = $scope.user.Address;
-    user.about = $scope.user.Bio;
-    delete user.avatar;
-    console.log(user);
-    UserSvc.edit( user, editResHandler );
+    var toEdit = $scope.current_user;
+    console.log(toEdit);
+    UserSvc.edit(toEdit, function (err, resp){
+      if (err) console.log(err);
+    });
 
     $scope.modalShown = !$scope.modalShown;
   }
