@@ -33,7 +33,6 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state, StoreSvc){
   }
 
   function back(){
-    console.log('back back')
     $state.transitionTo($state.current, {}, {reload: true, inherit:false, notify:true})
   }
 

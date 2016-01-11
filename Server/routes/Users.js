@@ -68,6 +68,7 @@ router.put('/', function (req, res){
 router.delete('/', function (req, res){
   if (req.userId === req.body._id || req.isAdmin){
     User.findByIdAndRemove(req.body._id, function (err, removedUser){
+      console.log(removedUser)
       res.status(err ? 400 : 200).send(err || 'removed');
     });
   }else{

@@ -83,7 +83,8 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
   }
 
   $scope.delete = function(){
-    UserSvc.delete(user, function(err, resp){
+    if (window.confirm("Do you really want to delete your account?")){
+      UserSvc.delete(user, function(err, resp){
       if (err){
         console.log(err);
       } else {
@@ -92,6 +93,7 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
         });
       }
     });
+    }
   }
 
   function editResHandler(err, resp){
