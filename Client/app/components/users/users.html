@@ -17,7 +17,7 @@
         <span class="userName columns small-1">{{user.username}}</span>
         <span class="about columns small-8" >{{user.about}}</span>
         <span class="editBtns columns small-1">
-          <div ng-if="user.isAdmin">
+          <div ng-if="me.isAdmin">
             <span class="edit" ng-click="editInfo(user._id); $event.stopPropagation();"><i class="fa fa-edit"></i></span>
             <span class="trash" ng-click="deleteUser(user._id); $event.stopPropagation();"><i class="fa fa-trash"></i></span>
           </div>
