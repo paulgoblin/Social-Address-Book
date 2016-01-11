@@ -20,6 +20,7 @@ router.get('/me', function(req, res){
   User.findById(req.userId,  function(err, user){
     console.log("getting me", user);
     user.password = null;
+    console.log("getting me", user.avatar);
     res.status(err ? 400 : 200).send(err || user);
   }).populate('avatar');
 });
@@ -66,7 +67,7 @@ router.delete('/', function (req, res){
 router.post('/avatar', function(req, res){
   console.log("id confirmation", req.userId, Object.keys(req.body.img));
   if (req.userId === req.body._id || req.isAdmin){
-    Avatar.create( {img: {data: req.body.img.base64, contentType:'image/png'}} , function(err, newAvatar){
+    Avatar.create( {img: {data: req.body.img.base64, contentType:req.body.img.filetype}} , function(err, newAvatar){
       if (err) return res.status(400).send(err);
       User.findById(req.userId, function(err, user){
         if (err) return res.status(400).send(err);

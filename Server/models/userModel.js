@@ -47,7 +47,7 @@ userSchema.statics.login = function(userInfo, cb) {
         return cb('incorrect username or password');
       }
     });
-  });
+  }).populate('avatar');
 }
 
 userSchema.statics.register = function(userInfo, cb) {
@@ -88,7 +88,7 @@ userSchema.statics.register = function(userInfo, cb) {
         })
       });
     });
-  });
+  }).populate('avatar');
 };
 
 userSchema.methods.toggleFavorite = function(togId, cb){

@@ -28,7 +28,6 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
   var user;
   $scope.modalShown = false;
-  $scope.images = {};
 
   if (StoreSvc.returnData('me')){
     updateView();
@@ -38,13 +37,24 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
         $state.go('landing_page');
         return;
       }
+      console.log("user from navSvc",resp.data);
       StoreSvc.saveData('me', resp.data);
       updateView();
     })
   }
 
+  function getAvatarSrc(user) {
+    console.log('inside avatarSrc', user);
+    var defaultUrl = "http://www.bathspa.ac.uk/media/WebProfilePictures/default_profile.jpg";
+    var userAvatar = user.avatar ? UserSvc.avatarImgSrc(user) : null;
+    return userAvatar || defaultUrl;
+  }
+
   function updateView (){
-    user = StoreSvc.returnData('me')
+    user = StoreSvc.returnData('me');
+    // var avatarSrc = getAvatarSrc(user);
+    // console.log("in update view",avatarSrc);
+    console.log("avatar", user.avatar);
     var User = {
       'Profile Name': user.profilename,
       Email: user.email,
@@ -53,7 +63,9 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
       Bio: user.about
     };
 
+    console.log("updating View");
     $scope.user = User;
+    $scope.avatarSrc = getAvatarSrc(user);
   }
 
   $scope.uploadAvatar = function(){
@@ -66,7 +78,6 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
   }
 
   $scope.save = function(){
-    console.log("image stuff");
     user.profilename = $scope.user['Profile Name'];
     user.email = $scope.user.Email;
     user.phone = $scope.user['Phone Number'];
