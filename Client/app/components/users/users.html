@@ -11,17 +11,17 @@
           </div>
         </div>
       </div>
-      <div class="content row" ng-repeat="user in users | filter:filterQuery" ng-click="toggleActive(user._id, $event)"
+      <div class="content row" ng-repeat="(idx, user) in users | filter:filterQuery" ng-click="toggleActive(user._id, $event)"
       ng-class="{ 'cardIsActive' : activeCards[user._id] }", ng-if='(user._id !== me._id) && (showFavs ?  isFav(user._id) : true)'>
 
       <div class="miniBar small-12 columns">
-        <img class="thumbAvatar columns small-1" src="{{user.avatar}}" alt="">
+        <img class="thumbAvatar columns small-1" src="{{::user.avatar}}" alt="">
         <span class="userName columns small-1">{{user.username}}</span>
         <span class="about columns small-8" >{{user.about}}</span>
         <span class="editBtns columns small-1">
           <div class="function_buttons_users">
             <div ng-if="me.isAdmin">
-            <span class="edit" ng-click="toggleModal($event)"><i class="fa fa-edit"></i></span>
+            <span class="edit" ng-click="toggleModal(idx, $event)"><i class="fa fa-edit"></i></span>
             <span class="trash" ng-click="deleteUser(user); $event.stopPropagation();"><i class="fa fa-trash"></i></span>
           </div>
           <span class="favStar">
@@ -45,7 +45,7 @@
               </div>
               <div class="row">
                 <p class="profileKey columns small-12 medium-3 large-3">Address</p>
-                <p class="columns small-12 medium-9 large-9">{{user.adress}}</p>
+                <p class="columns small-12 medium-9 large-9">{{user.address}}</p>
               </div>
               <div class="row">
                 <p class="profileKey columns small-12 medium-3 large-3">Phone</p>
@@ -59,16 +59,24 @@
           </div>
 
           <div class="cropAvatar small-12 medium-6 large-4 columns">
-            <img class="avatar" src="{{user.avatar}}" alt="Alessia Cara" >
+            <img class="avatar" src="{{::user.avatar}}" alt="Alessia Cara" >
           </div>
 
         </div>
       </div>
     </div>
         <modal show='modalShown'>
-    <div ng-repeat="(key, value) in user">
-      <label>{{key}}</label>
-      <input type="text" ng-model="user[key]">
+    <div>
+      <label>Name</label>
+      <input type="text" ng-model="current_user.profilename">
+      <label>Email</label>
+      <input type="text" ng-model="current_user.email">
+      <label>Address</label>
+      <input type="text" ng-model="current_user.address">
+      <label>Phone</label>
+      <input type="text" ng-model="current_user.phone">
+      <label>Bio</label>
+      <input type="text" ng-model="current_user.about">
     </div>
     <button ng-click="save()">Save</button>
   </modal>

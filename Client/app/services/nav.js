@@ -10,19 +10,19 @@ function NavSvc($http){
     $http.get('/API/users/me')
       .then(function(resp){
         console.log(resp.data);
-        cb(null, resp)
+        cb(resp.status, resp)
       }, function(err){
         console.log(err)
-        cb(err)
+        cb(err.status)
       });
   }
   this.users = function(cb){
     $http.get('/API/users')
       .then(function(resp){
-        cb(null,resp)
+        cb(resp.status,resp)
       }, function(err){
         console.log(err)
-        cb(err)
+        cb(err.status)
       });
   }
   this.logout = function(cb){

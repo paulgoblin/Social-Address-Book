@@ -29,34 +29,21 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
   var user;
   $scope.modalShown = false;
+  updateView();
 
-  if (StoreSvc.returnData('me')){
-    updateView();
-  }else{
+  function updateView() {
     NavSvc.home(function (err, resp){
-      if (err) {
+      if (err===401) {
         $state.go('landing_page');
         return;
       }
       console.log("user from navSvc",resp.data);
       StoreSvc.saveData('me', resp.data);
-      updateView();
+      user = StoreSvc.returnData('me');
+      $scope.user = user;
+      $scope.avatarSrc = UserSvc.getAvatarSrc(user);
+      console.log("avatar src", $scope.avatarSrc);
     })
-  }
-
-  function updateView() {
-    user = StoreSvc.returnData('me');
-    var User = {
-      'Profile Name': user.profilename,
-      Email: user.email,
-      'Phone Number': user.phone,
-      Address: user.address,
-      Bio: user.about
-    };
-
-    $scope.user = User;
-    $scope.avatarSrc = UserSvc.getAvatarSrc(user);
-    console.log("avatar src", $scope.avatarSrc);
   }
 
   $scope.uploadAvatar = function(){
@@ -70,12 +57,6 @@ function HomeCtrl($scope, $state, UserSvc, StoreSvc, NavSvc){
 
   $scope.save = function(){
     // var user = {};
-    user.profilename = $scope.user['Profile Name'];
-    user.email = $scope.user.Email;
-    user.phone = $scope.user['Phone Number'];
-    user.address = $scope.user.Address;
-    user.about = $scope.user.Bio;
-    delete user.avatar;
     console.log(user);
     UserSvc.edit( user, editResHandler );
 
