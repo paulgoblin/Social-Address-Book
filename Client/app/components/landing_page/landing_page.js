@@ -19,8 +19,12 @@ function LandingPageCtrl(LoginSvc, $rootScope, $state, StoreSvc){
   }
 
   function register(input){
-    var promise = LoginSvc.register(input);
-    loginResHandler( promise );
+    if ( input.password.length === 0 ) {
+      landing_page.err_msg = "Password must be at least 1 character"
+    } else {
+      var promise = LoginSvc.register(input);
+      loginResHandler( promise );
+  }
   }
 
   function login(input){
