@@ -38,12 +38,19 @@ function UserSvc($http){
   }
 
   this.uploadAvatar = function(updateData, cb){
+    console.log("uploading avatar", updateData.img);
     $http.post('/API/users/avatar', updateData)
     .then(function(resp){
       cb(null, resp);
     }, function(err){
       cb(err);
     })
+  }
+
+  this.avatarImgSrc = function(user){
+    var data = user.avatar.img.data;
+    var type = user.avatar.img.contentType;
+    return `data:${type};base64,${data}`
   }
 
 }
