@@ -5,14 +5,18 @@ angular
 
 function UsersCtrl($scope, UserSvc, StoreSvc){
   $scope.activeCards = {};
-  $scope.users = StoreSvc.returnData("users");
   $scope.me = StoreSvc.returnData("me");
   $scope.showFavs = false;
-  console.log($scope.me);
+
+  $scope.users = StoreSvc.returnData("users").map(user => {
+    user.avatar = UserSvc.getAvatarSrc(user);
+    return user;
+  })
+  console.log($scope.users);
 
   $scope.isFav = (_id) => {
     return $scope.me.favorites.some(faved_id => {
-      return _id == faved_id
+      return _id == faved_id;
     })
   }
 
